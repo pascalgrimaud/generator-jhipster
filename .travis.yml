@@ -3,6 +3,9 @@ os:
 services:
   - docker
 language: node_js
+cache:
+  directories:
+    - node_modules
 node_js:
   - "4.4.3"
 jdk:
@@ -19,17 +22,17 @@ env:
     - JHIPSTER_SCRIPTS=$JHIPSTER_TRAVIS/scripts
   matrix:
     - JHIPSTER=app-default-from-scratch JHIPSTER_NODE_CACHE=0
-    - JHIPSTER=app-gradle PROTRACTOR=1
-    - JHIPSTER=app-mysql PROFILE=prod PROTRACTOR=1
-    - JHIPSTER=app-psql-es-noi18n PROFILE=prod PROTRACTOR=1
-    - JHIPSTER=app-social-websocket PROTRACTOR=1
-    - JHIPSTER=app-cassandra
-    - JHIPSTER=app-microservice
-    - JHIPSTER=app-gateway
-    - JHIPSTER=app-hazelcast-cucumber
-    - JHIPSTER=app-mongodb
-    - JHIPSTER=app-oauth2
-    - JHIPSTER=app-jwt
+    # - JHIPSTER=app-gradle PROTRACTOR=1
+    # - JHIPSTER=app-mysql PROFILE=prod PROTRACTOR=1
+    # - JHIPSTER=app-psql-es-noi18n PROFILE=prod PROTRACTOR=1
+    # - JHIPSTER=app-social-websocket PROTRACTOR=1
+    # - JHIPSTER=app-cassandra
+    # - JHIPSTER=app-microservice
+    # - JHIPSTER=app-gateway
+    # - JHIPSTER=app-hazelcast-cucumber
+    # - JHIPSTER=app-mongodb
+    # - JHIPSTER=app-oauth2
+    # - JHIPSTER=app-jwt
 
 before_install:
   - sudo /etc/init.d/postgresql stop
@@ -41,11 +44,12 @@ install:
   - $JHIPSTER_INSTALL/03-checkVersion.sh
   - $JHIPSTER_INSTALL/04-cache.sh
 script:
-  - $JHIPSTER_SCRIPTS/01-generate-project.sh
-  - $JHIPSTER_SCRIPTS/02-generate-entities.sh
-  - $JHIPSTER_SCRIPTS/03-docker-compose.sh
-  - $JHIPSTER_SCRIPTS/04-tests.sh
-  - $JHIPSTER_SCRIPTS/05-run.sh
+  - yo jhipster --help
+  # - $JHIPSTER_SCRIPTS/01-generate-project.sh
+  # - $JHIPSTER_SCRIPTS/02-generate-entities.sh
+  # - $JHIPSTER_SCRIPTS/03-docker-compose.sh
+  # - $JHIPSTER_SCRIPTS/04-tests.sh
+  # - $JHIPSTER_SCRIPTS/05-run.sh
 notifications:
   webhooks:
     urls:
