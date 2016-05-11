@@ -43,7 +43,7 @@ install:
   - echo "$PWD"
   - ls -al /home/travis/.nvm/versions/node/v4.4.3/lib/node_modules/
   - ls -al
-  - ls -al node_modules/
+  # - ls -al node_modules/
   - $JHIPSTER_INSTALL/01-install-docker-compose.sh
   # - $JHIPSTER_INSTALL/02-install-jhipster-stack.sh
   - npm install -g npm
