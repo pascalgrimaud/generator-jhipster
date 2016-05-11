@@ -3,10 +3,10 @@ os:
 services:
   - docker
 language: node_js
-cache:
-  directories:
-    - node_modules
-    - /home/travis/.nvm/versions/node/v4.4.3/lib/node_modules/
+# cache:
+#   directories:
+#     - node_modules
+#     - /home/travis/.nvm/versions/node/v4.4.3/lib/node_modules/
 node_js:
   - "4.4.3"
 jdk:
