@@ -41,6 +41,7 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 install:
   - echo "$PWD"
+  - ls -al /home/travis/.nvm/versions/node/v4.4.3/lib/node_modules/
   - ls -al
   - ls -al node_modules/
   - $JHIPSTER_INSTALL/01-install-docker-compose.sh
