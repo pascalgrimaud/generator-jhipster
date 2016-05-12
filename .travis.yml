@@ -59,7 +59,7 @@ install:
   # - $JHIPSTER_INSTALL/03-checkVersion.sh
   # - $JHIPSTER_INSTALL/04-cache.sh
 script:
-  - echo "mycache"
+  - echo "end script..."
   # - yo jhipster --help
   # - $JHIPSTER_SCRIPTS/01-generate-project.sh
   # - $JHIPSTER_SCRIPTS/02-generate-entities.sh
