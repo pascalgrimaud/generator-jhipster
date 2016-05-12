@@ -41,7 +41,7 @@ env:
 #   - export DISPLAY=:99.0
 #   - sh -e /etc/init.d/xvfb start
 install:
-  - testCache.sh
+  - ./testCache.sh
   - echo "$PWD"
   # - ls -al /home/travis/.nvm/versions/node/v4.4.3/lib/node_modules/
   # - ls -al
