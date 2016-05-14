@@ -5,7 +5,7 @@ set -ev
 #--------------------------------------------------
 cd "$HOME"/"$JHIPSTER"
 if [ "$JHIPSTER" != "app-gradle" ]; then
-  mvn test
+  ./mvnw test
 else
   ./gradlew test
 fi
