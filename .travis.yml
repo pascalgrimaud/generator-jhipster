@@ -4,7 +4,7 @@ services:
   - docker
 language: node_js
 node_js:
-  - "4.4.3"
+  - "4.4.4"
 jdk:
   - oraclejdk8
 env:
@@ -30,7 +30,6 @@ env:
     - JHIPSTER=app-mongodb
     - JHIPSTER=app-oauth2
     - JHIPSTER=app-jwt
-
 before_install:
   - sudo /etc/init.d/postgresql stop
   - export DISPLAY=:99.0
