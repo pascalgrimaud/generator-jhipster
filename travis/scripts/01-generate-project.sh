@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ev
+
 #-------------------------------------------------------------------------------
 # Force no insight
 #-------------------------------------------------------------------------------
@@ -18,7 +18,3 @@ rm -Rf "$HOME"/"$JHIPSTER"/node_modules/*grunt*
 npm link generator-jhipster
 yo jhipster --force --no-insight
 ls -al "$HOME"/"$JHIPSTER"
-ls -al "$HOME"/"$JHIPSTER"/node_modules/
-ls -al "$HOME"/"$JHIPSTER"/node_modules/generator-jhipster/
-ls -al "$HOME"/"$JHIPSTER"/node_modules/generator-jhipster/generators/
-ls -al "$HOME"/"$JHIPSTER"/node_modules/generator-jhipster/generators/entity/
