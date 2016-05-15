@@ -7,7 +7,7 @@ mkdir -p "$HOME"/.config/configstore/
 mv "$JHIPSTER_TRAVIS"/configstore/*.json "$HOME"/.config/configstore/
 
 #-------------------------------------------------------------------------------
-# Generate the project with yo jhipster
+# Prepare project by copying configuration and entities
 #-------------------------------------------------------------------------------
 mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER" "$HOME"/
 cd "$HOME"/"$JHIPSTER"
