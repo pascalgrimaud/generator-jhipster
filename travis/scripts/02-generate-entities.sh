@@ -1,5 +1,4 @@
 #!/bin/bash
-set -ev
 
 moveEntity() {
   local entity="$1"
