@@ -5,6 +5,8 @@
 #-------------------------------------------------------------------------------
 cd "$HOME"/"$JHIPSTER"
 yo jhipster --force --no-insight --with-entities
+bower install
+gulp install
 ls -al "$HOME"/"$JHIPSTER"
 
 #-------------------------------------------------------------------------------
