@@ -11,7 +11,7 @@ env:
   global:
     - JHIPSTER_CACHE_REPO=https://github.com/pascalgrimaud/jhipster-travis-cache.git
     - JHIPSTER_CACHE_BRANCH=160516-spring-boot-135
-    - JHIPSTER_NODE_CACHE=1
+    - JHIPSTER_NODE_CACHE=0
     - PROFILE=dev
     - RUN_APP=1
     - PROTRACTOR=0

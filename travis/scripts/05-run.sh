@@ -1,5 +1,4 @@
 #!/bin/bash
-set -ev
 
 launchProtractor() {
     retryCount=1
