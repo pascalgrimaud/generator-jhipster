@@ -9,16 +9,20 @@ mv "$JHIPSTER_TRAVIS"/configstore/*.json "$HOME"/.config/configstore/
 #-------------------------------------------------------------------------------
 # Generate the project with yo jhipster
 #-------------------------------------------------------------------------------
-mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER" "$HOME"/
-cd "$HOME"/"$JHIPSTER"
+mkdir -p "$HOME"/app
+mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER"/.yo-rc.json "$HOME"/app/
+cd "$HOME"/app
 
-rm -Rf "$HOME"/"$JHIPSTER"/node_modules/.bin/*grunt*
-rm -Rf "$HOME"/"$JHIPSTER"/node_modules/*grunt*
+rm -Rf "$HOME"/app/node_modules/.bin/*grunt*
+rm -Rf "$HOME"/app/node_modules/*grunt*
 
 npm link generator-jhipster
+if [ "$JHIPSTER_NODE_CACHE" == 0 ]; then
+  rm -Rf node_modules
+fi
 yo jhipster --force --no-insight
-ls -al "$HOME"/"$JHIPSTER"
-ls -al "$HOME"/"$JHIPSTER"/node_modules/
-ls -al "$HOME"/"$JHIPSTER"/node_modules/generator-jhipster/
-ls -al "$HOME"/"$JHIPSTER"/node_modules/generator-jhipster/generators/
-ls -al "$HOME"/"$JHIPSTER"/node_modules/generator-jhipster/generators/entity/
+ls -al "$HOME"/app
+ls -al "$HOME"/app/node_modules/
+ls -al "$HOME"/app/node_modules/generator-jhipster/
+ls -al "$HOME"/app/node_modules/generator-jhipster/generators/
+ls -al "$HOME"/app/node_modules/generator-jhipster/generators/entity/
