@@ -9,7 +9,8 @@ mv "$JHIPSTER_TRAVIS"/configstore/*.json "$HOME"/.config/configstore/
 #-------------------------------------------------------------------------------
 # Generate the project with yo jhipster
 #-------------------------------------------------------------------------------
-mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER" "$HOME"/app
+mkdir -p "$HOME"/app
+mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER"/.yo-rc.json "$HOME"/app/
 cd "$HOME"/app
 
 rm -Rf "$HOME"/app/node_modules/.bin/*grunt*

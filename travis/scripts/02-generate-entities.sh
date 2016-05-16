@@ -1,6 +1,8 @@
 #!/bin/bash
 set -ev
-
+#-------------------------------------------------------------------------------
+# Functions
+#-------------------------------------------------------------------------------
 moveEntity() {
   local entity="$1"
   mv "$JHIPSTER_SAMPLES"/.jhipster/"$entity".json "$HOME"/app/.jhipster/
