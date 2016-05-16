@@ -3,31 +3,20 @@ set -ev
 
 moveEntity() {
   local entity="$1"
-  mv "$JHIPSTER_SAMPLES"/.jhipster/"$entity".json "$HOME"/app/.jhipster/
+  mv "$JHIPSTER_SAMPLES"/.jhipster/"$entity".json "$HOME"/"$JHIPSTER"/.jhipster/
 }
 
-#-------------------------------------------------------------------------------
-# Force no insight
-#-------------------------------------------------------------------------------
-mkdir -p "$HOME"/.config/configstore/
-mv "$JHIPSTER_TRAVIS"/configstore/*.json "$HOME"/.config/configstore/
-
-#-------------------------------------------------------------------------------
-# Prepare project by copying configuration and entities
-#-------------------------------------------------------------------------------
-mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER" "$HOME"/app
-ls -al "$HOME"/app/
-cd "$HOME"/app
-
-rm -Rf "$HOME"/"$JHIPSTER"/node_modules/.bin/*grunt*
-rm -Rf "$HOME"/"$JHIPSTER"/node_modules/*grunt*
-
-npm link generator-jhipster
+generateEntity() {
+  local entity="$1"
+  if [ -a .jhipster/"$entity".json ]; then
+    yo jhipster:entity "$entity" --force --no-insight
+  fi
+}
 
 #-------------------------------------------------------------------------------
 # Copy entities json
 #-------------------------------------------------------------------------------
-mkdir -p "$HOME"/app/.jhipster/
+mkdir -p "$HOME"/"$JHIPSTER"/.jhipster/
 if [ "$JHIPSTER" == "app-mongodb" ]; then
   moveEntity MongoBankAccount
 
@@ -98,5 +87,50 @@ else
   moveEntity FieldTestPaginationEntity
 fi
 
-ls -al "$HOME"/app
-ls -al "$HOME"/app/.jhipster/
+ls -l "$HOME"/"$JHIPSTER"/.jhipster/
+
+#-------------------------------------------------------------------------------
+# Generate the entities with yo jhipster:entity
+#-------------------------------------------------------------------------------
+cd "$HOME"/"$JHIPSTER"
+generateEntity BankAccount
+generateEntity MongoBankAccount
+generateEntity MicroserviceBankAccount
+generateEntity CassBankAccount
+generateEntity Label
+generateEntity MicroserviceLabel
+generateEntity Operation
+generateEntity MicroserviceOperation
+
+generateEntity CassTestEntity
+generateEntity CassTestMapstructEntity
+generateEntity CassTestServiceClassEntity
+generateEntity CassTestServiceImplEntity
+
+generateEntity FieldTestEntity
+generateEntity FieldTestMapstructEntity
+generateEntity FieldTestServiceClassEntity
+generateEntity FieldTestServiceImplEntity
+generateEntity FieldTestInfiniteScrollEntity
+generateEntity FieldTestPagerEntity
+generateEntity FieldTestPaginationEntity
+
+generateEntity TestEntity
+generateEntity TestMapstruct
+generateEntity TestServiceClass
+generateEntity TestServiceImpl
+generateEntity TestInfiniteScroll
+generateEntity TestPager
+generateEntity TestPagination
+generateEntity TestManyToOne
+generateEntity TestManyToMany
+generateEntity TestOneToOne
+
+#-------------------------------------------------------------------------------
+# Check Javadoc generation
+#-------------------------------------------------------------------------------
+if [ "$JHIPSTER" != "app-gradle" ]; then
+  mvn javadoc:javadoc
+else
+  ./gradlew javadoc
+fi
