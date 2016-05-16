@@ -17,6 +17,9 @@ rm -Rf "$HOME"/app/node_modules/.bin/*grunt*
 rm -Rf "$HOME"/app/node_modules/*grunt*
 
 npm link generator-jhipster
+if [ "$JHIPSTER_NODE_CACHE" == 0 ]; then
+  rm -Rf node_modules
+fi
 yo jhipster --force --no-insight
 ls -al "$HOME"/app
 ls -al "$HOME"/app/node_modules/

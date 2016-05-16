@@ -9,9 +9,6 @@ git clone -b $JHIPSTER_CACHE_BRANCH $JHIPSTER_CACHE_REPO
 rm -Rf "$HOME"/.m2/repository/
 mv "$TRAVIS_BUILD_DIR"/jhipster-travis-cache/repository "$HOME"/.m2/
 
-if [ "$JHIPSTER_NODE_CACHE" == 1 ]; then
-  mv "$TRAVIS_BUILD_DIR"/jhipster-travis-cache/node_modules/ "$JHIPSTER_SAMPLES/$JHIPSTER"/
-fi
 #-------------------------------------------------------------------------------
 # Use phantomjs cache
 #-------------------------------------------------------------------------------
