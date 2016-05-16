@@ -1,5 +1,10 @@
 #!/bin/bash
 
+moveEntity() {
+  local entity="$1"
+  mv "$JHIPSTER_SAMPLES"/.jhipster/"$entity".json "$HOME"/"$JHIPSTER"/.jhipster/
+}
+
 #-------------------------------------------------------------------------------
 # Force no insight
 #-------------------------------------------------------------------------------
@@ -16,4 +21,80 @@ rm -Rf "$HOME"/"$JHIPSTER"/node_modules/.bin/*grunt*
 rm -Rf "$HOME"/"$JHIPSTER"/node_modules/*grunt*
 
 npm link generator-jhipster
+
+#-------------------------------------------------------------------------------
+# Copy entities json
+#-------------------------------------------------------------------------------
+mkdir -p "$HOME"/"$JHIPSTER"/.jhipster/
+if [ "$JHIPSTER" == "app-mongodb" ]; then
+  moveEntity MongoBankAccount
+
+  moveEntity FieldTestEntity
+  moveEntity FieldTestMapstructEntity
+  moveEntity FieldTestServiceClassEntity
+  moveEntity FieldTestServiceImplEntity
+  moveEntity FieldTestInfiniteScrollEntity
+  moveEntity FieldTestPagerEntity
+  moveEntity FieldTestPaginationEntity
+
+elif [ "$JHIPSTER" == "app-cassandra" ]; then
+  moveEntity CassBankAccount
+
+  moveEntity CassTestEntity
+  moveEntity CassTestMapstructEntity
+  moveEntity CassTestServiceClassEntity
+  moveEntity CassTestServiceImplEntity
+
+elif [ "$JHIPSTER" == "app-microservice" ]; then
+  moveEntity MicroserviceBankAccount
+  moveEntity MicroserviceOperation
+  moveEntity MicroserviceLabel
+
+  moveEntity FieldTestEntity
+  moveEntity FieldTestMapstructEntity
+  moveEntity FieldTestServiceClassEntity
+  moveEntity FieldTestServiceImplEntity
+  moveEntity FieldTestInfiniteScrollEntity
+  moveEntity FieldTestPagerEntity
+  moveEntity FieldTestPaginationEntity
+
+elif [[ ("$JHIPSTER" == "app-mysql") || ("$JHIPSTER" == "app-psql-es-noi18n") ]]; then
+  moveEntity BankAccount
+  moveEntity Label
+  moveEntity Operation
+
+  moveEntity FieldTestEntity
+  moveEntity FieldTestMapstructEntity
+  moveEntity FieldTestServiceClassEntity
+  moveEntity FieldTestServiceImplEntity
+  moveEntity FieldTestInfiniteScrollEntity
+  moveEntity FieldTestPagerEntity
+  moveEntity FieldTestPaginationEntity
+
+  moveEntity TestEntity
+  moveEntity TestMapstruct
+  moveEntity TestServiceClass
+  moveEntity TestServiceImpl
+  moveEntity TestInfiniteScroll
+  moveEntity TestPager
+  moveEntity TestPagination
+  moveEntity TestManyToOne
+  moveEntity TestManyToMany
+  moveEntity TestOneToOne
+
+else
+  moveEntity BankAccount
+  moveEntity Label
+  moveEntity Operation
+
+  moveEntity FieldTestEntity
+  moveEntity FieldTestMapstructEntity
+  moveEntity FieldTestServiceClassEntity
+  moveEntity FieldTestServiceImplEntity
+  moveEntity FieldTestInfiniteScrollEntity
+  moveEntity FieldTestPagerEntity
+  moveEntity FieldTestPaginationEntity
+fi
+
 ls -al "$HOME"/"$JHIPSTER"/
+ls -al "$HOME"/"$JHIPSTER"/.jhipster/
