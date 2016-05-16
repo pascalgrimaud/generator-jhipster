@@ -27,7 +27,7 @@ launchProtractor() {
 #-------------------------------------------------------------------------------
 # Start the application
 #-------------------------------------------------------------------------------
-cd "$HOME"/"$JHIPSTER"
+cd "$HOME"/app
 if [ "$RUN_APP" == 1 ]; then
   if [ "$JHIPSTER" != "app-gradle" ]; then
     ./mvnw package -DskipTests=true -P"$PROFILE"

@@ -3,7 +3,7 @@ set -ev
 
 moveEntity() {
   local entity="$1"
-  mv "$JHIPSTER_SAMPLES"/.jhipster/"$entity".json "$HOME"/"$JHIPSTER"/.jhipster/
+  mv "$JHIPSTER_SAMPLES"/.jhipster/"$entity".json "$HOME"/app/.jhipster/
 }
 
 #-------------------------------------------------------------------------------
@@ -15,8 +15,9 @@ mv "$JHIPSTER_TRAVIS"/configstore/*.json "$HOME"/.config/configstore/
 #-------------------------------------------------------------------------------
 # Prepare project by copying configuration and entities
 #-------------------------------------------------------------------------------
-mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER" "$HOME"/
-cd "$HOME"/"$JHIPSTER"
+mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER" "$HOME"/app
+ls -al "$HOME"/app/
+cd "$HOME"/app
 
 rm -Rf "$HOME"/"$JHIPSTER"/node_modules/.bin/*grunt*
 rm -Rf "$HOME"/"$JHIPSTER"/node_modules/*grunt*
@@ -26,7 +27,7 @@ npm link generator-jhipster
 #-------------------------------------------------------------------------------
 # Copy entities json
 #-------------------------------------------------------------------------------
-mkdir -p "$HOME"/"$JHIPSTER"/.jhipster/
+mkdir -p "$HOME"/app/.jhipster/
 if [ "$JHIPSTER" == "app-mongodb" ]; then
   moveEntity MongoBankAccount
 
@@ -97,5 +98,5 @@ else
   moveEntity FieldTestPaginationEntity
 fi
 
-ls -al "$HOME"/"$JHIPSTER"/
-ls -al "$HOME"/"$JHIPSTER"/.jhipster/
+ls -al "$HOME"/app
+ls -al "$HOME"/app/.jhipster/

@@ -3,11 +3,9 @@ set -ev
 #-------------------------------------------------------------------------------
 # Generate project and entities
 #-------------------------------------------------------------------------------
-cd "$HOME"/"$JHIPSTER"
+cd "$HOME"/app
 yo jhipster --force --no-insight --with-entities
-bower install
-gulp install
-ls -al "$HOME"/"$JHIPSTER"
+ls -al "$HOME"/app
 
 #-------------------------------------------------------------------------------
 # Check Javadoc generation
