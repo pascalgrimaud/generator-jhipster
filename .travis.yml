@@ -9,6 +9,7 @@ jdk:
   - oraclejdk8
 cache:
   directories:
+    - /home/travis/.nvm/versions/node/v4.4.4/lib/node_modules/
     - /home/travis/app/node_modules
 env:
   global:
