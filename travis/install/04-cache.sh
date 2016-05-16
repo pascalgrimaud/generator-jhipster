@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -ev
 #-------------------------------------------------------------------------------
 # Use jhipster-travis-cache that contain .m2 and node_modules
 #-------------------------------------------------------------------------------
@@ -21,3 +21,6 @@ sudo mv "$TRAVIS_BUILD_DIR"/jhipster-travis-cache/phantomjs-2.1.1-linux-x86_64/L
 sudo mv "$TRAVIS_BUILD_DIR"/jhipster-travis-cache/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/phantomjs-2.1.1/
 sudo rm /usr/local/phantomjs
 sudo ln -sf /usr/local/phantomjs-2.1.1/ /usr/local/phantomjs
+ls -l /usr/local/
+ls -l /usr/local/phantomjs/
+ls -l /usr/local/phantomjs-2.1.1/
