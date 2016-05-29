@@ -42,7 +42,7 @@ install:
   - $JHIPSTER_INSTALL/02-install-jhipster-stack.sh
   - $JHIPSTER_INSTALL/03-checkVersion.sh
   - $JHIPSTER_INSTALL/04-cache.sh
-  - docker build -t jhipster-tester -f travis/Dockerfile travis/
+  - $JHIPSTER_TRAVIS/build.sh
 script:
   - $JHIPSTER_SCRIPTS/01-generate-project.sh
   - $JHIPSTER_DOCKER/01-run-docker-tests.sh

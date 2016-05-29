@@ -11,7 +11,7 @@ runContainer() {
         -v "$HOME"/.m2:/home/jhipster/volume/.m2:ro \
         -v "$HOME"/app/node_modules:/home/jhipster/volume/node_modules:ro \
         -v "$TRAVIS_BUILD_DIR":/home/jhipster/volume/generator-jhipster:ro \
-        -t tester
+        -t jhipster-tester
 }
 
 runContainerSkipFront() {
@@ -22,7 +22,7 @@ runContainerSkipFront() {
         -v "$HOME"/.m2:/home/jhipster/volume/.m2:ro \
         -v "$TRAVIS_BUILD_DIR":/home/jhipster/volume/generator-jhipster:ro \
         -e JHIPSTER_TEST_FRONT=0
-        -t tester
+        -t jhipster-tester
 }
 
 #-------------------------------------------------------------------------------
