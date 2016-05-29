@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ev
 #-------------------------------------------------------------------------------
-# Use jhipster-travis-cache that contain .m2 and node_modules
+# Use jhipster-travis-cache that contain .m2
 #-------------------------------------------------------------------------------
 cd "$TRAVIS_BUILD_DIR"/
 git clone -b $JHIPSTER_CACHE_BRANCH $JHIPSTER_CACHE_REPO

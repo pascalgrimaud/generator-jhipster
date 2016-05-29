@@ -4,7 +4,7 @@ services:
   - docker
 language: node_js
 node_js:
-  - "4.4.4"
+  - "4.4.5"
 jdk:
   - oraclejdk8
 env:
@@ -13,24 +13,26 @@ env:
     - JHIPSTER_CACHE_BRANCH=160516-springboot-135
     - PROFILE=dev
     - RUN_APP=1
+    - DOCKER_TESTS=0
     - PROTRACTOR=0
     - JHIPSTER_TRAVIS=$TRAVIS_BUILD_DIR/travis
     - JHIPSTER_INSTALL=$JHIPSTER_TRAVIS/install
     - JHIPSTER_SAMPLES=$JHIPSTER_TRAVIS/samples
     - JHIPSTER_SCRIPTS=$JHIPSTER_TRAVIS/scripts
+    - JHIPSTER_DOCKER=$JHIPSTER_TRAVIS/docker
   matrix:
     - JHIPSTER=app-default-from-scratch JHIPSTER_NODE_CACHE=0
-    - JHIPSTER=app-gradle PROTRACTOR=1
-    - JHIPSTER=app-mysql PROFILE=prod PROTRACTOR=1
-    - JHIPSTER=app-psql-es-noi18n PROFILE=prod PROTRACTOR=1
-    - JHIPSTER=app-social-websocket PROTRACTOR=1
-    - JHIPSTER=app-cassandra
-    - JHIPSTER=app-microservice
-    - JHIPSTER=app-gateway
-    - JHIPSTER=app-hazelcast-cucumber
-    - JHIPSTER=app-mongodb
-    - JHIPSTER=app-oauth2
-    - JHIPSTER=app-jwt
+    # - JHIPSTER=app-gradle PROTRACTOR=1
+    # - JHIPSTER=app-mysql PROFILE=prod PROTRACTOR=1
+    # - JHIPSTER=app-psql-es-noi18n PROFILE=prod PROTRACTOR=1
+    # - JHIPSTER=app-social-websocket PROTRACTOR=1
+    # - JHIPSTER=app-cassandra
+    # - JHIPSTER=app-microservice
+    # - JHIPSTER=app-gateway
+    # - JHIPSTER=app-hazelcast-cucumber
+    - JHIPSTER=app-mongodb DOCKER_TESTS=1
+    # - JHIPSTER=app-oauth2
+    # - JHIPSTER=app-jwt
 before_install:
   - sudo /etc/init.d/postgresql stop
   - export DISPLAY=:99.0
@@ -40,13 +42,16 @@ install:
   - $JHIPSTER_INSTALL/02-install-jhipster-stack.sh
   - $JHIPSTER_INSTALL/03-checkVersion.sh
   - $JHIPSTER_INSTALL/04-cache.sh
+  - docker build -t jhipster-tester -f travis/Dockerfile travis/
 script:
   - $JHIPSTER_SCRIPTS/01-generate-project.sh
+  - $JHIPSTER_DOCKER/01-run-docker-tests.sh
   - $JHIPSTER_SCRIPTS/02-generate-entities.sh
   - $JHIPSTER_SCRIPTS/03-docker-compose.sh
   - $JHIPSTER_SCRIPTS/04-tests.sh
   - $JHIPSTER_SCRIPTS/05-run.sh
   - $JHIPSTER_SCRIPTS/06-sonar.sh
+  - $JHIPSTER_SCRIPTS/07-checkDocker.sh
 notifications:
   webhooks:
     urls:
