@@ -13,6 +13,7 @@ if [ ! -f "$HOME"/.m2/cache.txt ]; then
     echo "no cache.txt"
     echo "[$(date)] $JHIPSTER" > "$HOME"/.m2/cache.txt
 else
+    echo "found cache"
     cat "$HOME"/.m2/cache.txt
 fi
 
