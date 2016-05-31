@@ -12,6 +12,7 @@ cache:
     - node_modules
     - $HOME/.m2
     - $HOME/app/node_modules
+    - $HOME/app/node
 env:
   global:
     - JHIPSTER_CACHE_REPO=https://github.com/jhipster/jhipster-travis-cache.git
@@ -24,18 +25,18 @@ env:
     - JHIPSTER_SAMPLES=$JHIPSTER_TRAVIS/samples
     - JHIPSTER_SCRIPTS=$JHIPSTER_TRAVIS/scripts
   matrix:
-    # - JHIPSTER=app-default-from-scratch JHIPSTER_NODE_CACHE=0
-    # - JHIPSTER=app-gradle PROTRACTOR=1
+    - JHIPSTER=app-default-from-scratch JHIPSTER_NODE_CACHE=0
+    - JHIPSTER=app-gradle PROTRACTOR=1
     - JHIPSTER=app-mysql PROFILE=prod PROTRACTOR=1
-    # - JHIPSTER=app-psql-es-noi18n PROFILE=prod PROTRACTOR=1
-    # - JHIPSTER=app-social-websocket PROTRACTOR=1
-    # - JHIPSTER=app-cassandra
-    # - JHIPSTER=app-microservice
-    # - JHIPSTER=app-gateway
-    # - JHIPSTER=app-hazelcast-cucumber
-    # - JHIPSTER=app-mongodb
-    # - JHIPSTER=app-oauth2
-    # - JHIPSTER=app-jwt
+    - JHIPSTER=app-psql-es-noi18n PROFILE=prod PROTRACTOR=1
+    - JHIPSTER=app-social-websocket PROTRACTOR=1
+    - JHIPSTER=app-cassandra
+    - JHIPSTER=app-microservice
+    - JHIPSTER=app-gateway
+    - JHIPSTER=app-hazelcast-cucumber
+    - JHIPSTER=app-mongodb
+    - JHIPSTER=app-oauth2
+    - JHIPSTER=app-jwt
 before_install:
   - sudo /etc/init.d/postgresql stop
   - export DISPLAY=:99.0
