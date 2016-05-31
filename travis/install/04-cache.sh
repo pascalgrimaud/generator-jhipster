@@ -9,6 +9,13 @@ set -ev
 # rm -Rf "$HOME"/.m2/repository/
 # mv "$TRAVIS_BUILD_DIR"/jhipster-travis-cache/repository "$HOME"/.m2/
 
+if [ ! -f "$HOME"/.m2/cache.txt ]; then
+    echo "no cache.txt"
+    echo "[$(date)] $JHIPSTER" > "$HOME"/.m2/cache.txt
+else
+    cat "$HOME"/.m2/cache.txt
+fi
+
 #-------------------------------------------------------------------------------
 # Use phantomjs cache
 #-------------------------------------------------------------------------------
