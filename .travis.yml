@@ -30,12 +30,13 @@ env:
     - JHIPSTER=app-psql-es-noi18n PROFILE=prod PROTRACTOR=1
     - JHIPSTER=app-social-websocket PROTRACTOR=1
     - JHIPSTER=app-cassandra
-    - JHIPSTER=app-microservice
-    - JHIPSTER=app-gateway
     - JHIPSTER=app-hazelcast-cucumber
     - JHIPSTER=app-mongodb
     - JHIPSTER=app-oauth2
     - JHIPSTER=app-jwt
+    - JHIPSTER=app-gateway
+    - JHIPSTER=app-microservice
+    - JHIPSTER=app-microservice-gradle
 before_install:
   - sudo /etc/init.d/postgresql stop
   - export DISPLAY=:99.0

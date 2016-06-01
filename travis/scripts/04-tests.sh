@@ -9,6 +9,6 @@ if [ "$JHIPSTER" != "app-gradle" ]; then
 else
   ./gradlew test
 fi
-if [ "$JHIPSTER" != "app-microservice" ]; then
+if [[ ("$JHIPSTER" != "app-microservice") && ("$JHIPSTER" != "app-microservice-gradle") ]]; then
   gulp test --no-notification
 fi
