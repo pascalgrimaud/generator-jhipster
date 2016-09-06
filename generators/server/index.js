@@ -418,7 +418,8 @@ module.exports = JhipsterServerGenerator.extend({
             }
 
             if (this.applicationType === 'microservice' || this.applicationType === 'gateway' || this.applicationType === 'uaa') {
-                this.copy(DOCKER_DIR + 'central-server-config/application.yml', DOCKER_DIR + 'central-server-config/application.yml');
+                this.copy(DOCKER_DIR + 'central-server-config/app/application.yml', DOCKER_DIR + 'central-server-config/app/application.yml');
+                this.copy(DOCKER_DIR + 'central-server-config/dev/application.yml', DOCKER_DIR + 'central-server-config/dev/application.yml');
                 this.template(DOCKER_DIR + '_jhipster-registry.yml', DOCKER_DIR + 'jhipster-registry.yml', this, {});
             }
             this.template(DOCKER_DIR + '_sonar.yml', DOCKER_DIR + 'sonar.yml', this, {});

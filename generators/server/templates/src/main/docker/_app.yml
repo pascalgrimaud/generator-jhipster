@@ -122,4 +122,6 @@ services:
         extends:
             file: jhipster-registry.yml
             service: jhipster-registry
+        volumes:
+            - ./central-server-config/app:/central-config
     <%_ } _%>

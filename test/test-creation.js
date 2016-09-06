@@ -399,7 +399,8 @@ const expectedFiles = {
     ],
 
     containerizeWithDocker: [
-        DOCKER_DIR + 'central-server-config/application.yml',
+        DOCKER_DIR + 'central-server-config/app/application.yml',
+        DOCKER_DIR + 'central-server-config/dev/application.yml',
         DOCKER_DIR + 'jhipster-registry.yml',
         DOCKER_DIR + 'Dockerfile',
         DOCKER_DIR + 'app.yml'
