@@ -140,6 +140,7 @@ module.exports = JhipsterServerGenerator.extend({
             this.authenticationType = this.config.get('authenticationType');
             this.clusteredHttpSession = this.config.get('clusteredHttpSession');
             this.searchEngine = this.config.get('searchEngine');
+            this.serviceDiscoveryType = this.config.get('serviceDiscoveryType');
             this.websocket = this.config.get('websocket');
             this.databaseType = this.config.get('databaseType');
             if (this.databaseType === 'mongodb') {
@@ -255,6 +256,7 @@ module.exports = JhipsterServerGenerator.extend({
             this.configOptions.devDatabaseType = this.devDatabaseType;
             this.configOptions.prodDatabaseType = this.prodDatabaseType;
             this.configOptions.searchEngine = this.searchEngine;
+            this.configOptions.serviceDiscoveryType = this.serviceDiscoveryType;
             this.configOptions.buildTool = this.buildTool;
             this.configOptions.enableSocialSignIn = this.enableSocialSignIn;
             this.configOptions.authenticationType = this.authenticationType;
@@ -282,6 +284,7 @@ module.exports = JhipsterServerGenerator.extend({
             insight.track('app/devDatabaseType', this.devDatabaseType);
             insight.track('app/prodDatabaseType', this.prodDatabaseType);
             insight.track('app/searchEngine', this.searchEngine);
+            insight.track('app/serviceDiscoveryType', this.serviceDiscoveryType);
             insight.track('app/buildTool', this.buildTool);
             insight.track('app/enableSocialSignIn', this.enableSocialSignIn);
         },
@@ -332,6 +335,7 @@ module.exports = JhipsterServerGenerator.extend({
             this.config.set('devDatabaseType', this.devDatabaseType);
             this.config.set('prodDatabaseType', this.prodDatabaseType);
             this.config.set('searchEngine', this.searchEngine);
+            this.config.set('serviceDiscoveryType', this.serviceDiscoveryType);
             this.config.set('buildTool', this.buildTool);
             this.config.set('enableSocialSignIn', this.enableSocialSignIn);
             this.config.set('jwtSecretKey', this.jwtSecretKey);
@@ -421,6 +425,11 @@ module.exports = JhipsterServerGenerator.extend({
                 this.copy(DOCKER_DIR + 'central-server-config/application.yml', DOCKER_DIR + 'central-server-config/application.yml');
                 this.template(DOCKER_DIR + '_jhipster-registry.yml', DOCKER_DIR + 'jhipster-registry.yml', this, {});
             }
+
+            if (this.applicationType === 'microservice' || this.applicationType === 'gateway' || this.serviceDiscoveryType === 'consul') {
+                //this.template(DOCKER_DIR + '_jhipster-registry.yml', DOCKER_DIR + 'jhipster-registry.yml', this, {});
+            }
+
             this.template(DOCKER_DIR + '_sonar.yml', DOCKER_DIR + 'sonar.yml', this, {});
         },
 

@@ -100,6 +100,27 @@ function askForServerSideOpts() {
         },
         {
             when: function (response) {
+                return applicationType === 'gateway' || applicationType === 'microservice';
+            },
+            type: 'list',
+            name: 'serviceDiscoveryType',
+            message: function (response) {
+                return getNumberedQuestion('Which Service Discovery and Configuration solution would you like to use?', applicationType === 'gateway' || applicationType === 'microservice');
+            },
+            choices: [
+                {
+                    value: 'eureka',
+                    name: 'JHipster Registry (using Eureka and Spring Cloud Config)'
+                },
+                {
+                    value: 'consul',
+                    name: 'Consul (using Spring Cloud Consul)'
+                }
+            ],
+            default: "eureka"
+        },
+        {
+            when: function (response) {
                 return ((applicationType === 'gateway' || applicationType === 'microservice') && response.authenticationType === 'uaa');
             },
             type: 'input',
@@ -505,6 +526,7 @@ function askForServerSideOpts() {
         this.devDatabaseType = props.devDatabaseType;
         this.prodDatabaseType = props.prodDatabaseType;
         this.searchEngine = props.searchEngine;
+        this.serviceDiscoveryType = props.serviceDiscoveryType;
         this.buildTool = props.buildTool;
         this.enableSocialSignIn = props.enableSocialSignIn;
         this.uaaBaseName = getUaaAppName.call(this, props.uaaBaseName).baseName;
