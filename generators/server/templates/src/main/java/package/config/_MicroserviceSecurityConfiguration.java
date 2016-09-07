@@ -53,11 +53,13 @@ package <%=packageName%>.config;
           .and()
               .authorizeRequests()
               .antMatchers("/api/**").authenticated()
+              <%_ if (serviceDiscoveryType == 'consul') { _%>
+              .antMatchers("/management/health").permitAll()
+              <%_ } _%>
               .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
               .antMatchers("/swagger-resources/configuration/ui").permitAll()
           .and()
               .apply(securityConfigurerAdapter());
-
       }
 
       private JWTConfigurer securityConfigurerAdapter() {
