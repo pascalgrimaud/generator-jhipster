@@ -49,11 +49,13 @@ fi
 
 if [ "$RUN_APP" == 1 ]; then
     java -jar app.war --spring.profiles.active="$PROFILE" &
-    sleep 20
     #-------------------------------------------------------------------------------
     # Launch protractor tests
     #-------------------------------------------------------------------------------
     if [ "$PROTRACTOR" == 1 ]; then
+        sleep 20
         launchProtractor
+    else
+        sleep 60
     fi
 fi
