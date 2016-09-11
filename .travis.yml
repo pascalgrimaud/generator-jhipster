@@ -7,6 +7,8 @@ node_js:
   - "4.5.0"
 jdk:
   - oraclejdk8
+addons:
+  firefox: "latest"
 cache:
   directories:
     - node_modules
