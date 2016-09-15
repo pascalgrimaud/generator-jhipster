@@ -40,7 +40,9 @@ const constants = require('../generator-constants'),
     DOCKER_SONAR = constants.DOCKER_SONAR,
     DOCKER_JHIPSTER_CONSOLE = constants.DOCKER_JHIPSTER_CONSOLE,
     DOCKER_JHIPSTER_ELASTICSEARCH = constants.DOCKER_JHIPSTER_ELASTICSEARCH,
-    DOCKER_JHIPSTER_LOGSTASH = constants.DOCKER_JHIPSTER_LOGSTASH;
+    DOCKER_JHIPSTER_LOGSTASH = constants.DOCKER_JHIPSTER_LOGSTASH,
+    DOCKER_CONSUL = constants.DOCKER_CONSUL;
+
 
 var javaDir;
 
@@ -126,6 +128,7 @@ module.exports = JhipsterServerGenerator.extend({
             this.DOCKER_JHIPSTER_CONSOLE = DOCKER_JHIPSTER_CONSOLE;
             this.DOCKER_JHIPSTER_ELASTICSEARCH = DOCKER_JHIPSTER_ELASTICSEARCH;
             this.DOCKER_JHIPSTER_LOGSTASH = DOCKER_JHIPSTER_LOGSTASH;
+            this.DOCKER_CONSUL = DOCKER_CONSUL;
 
             this.applicationType = this.config.get('applicationType') || this.configOptions.applicationType;
             if (!this.applicationType) {
@@ -422,13 +425,21 @@ module.exports = JhipsterServerGenerator.extend({
             }
 
             if (this.applicationType === 'microservice' || this.applicationType === 'gateway' || this.applicationType === 'uaa') {
-                this.copy(DOCKER_DIR + 'central-server-config/application.yml', DOCKER_DIR + 'central-server-config/application.yml');
-                this.template(DOCKER_DIR + '_jhipster-registry.yml', DOCKER_DIR + 'jhipster-registry.yml', this, {});
+                this.template(DOCKER_DIR + 'config/_README.md', DOCKER_DIR + 'central-server-config/README.md',this, {});
+
+                if (this.serviceDiscoveryType === 'consul') {
+                    this.template(DOCKER_DIR + '_consul.yml', DOCKER_DIR + 'consul.yml', this, {});
+                    this.copy(DOCKER_DIR + 'config/git2consul.json', DOCKER_DIR + 'config/git2consul.json');
+                    this.copy(DOCKER_DIR + 'config/application-consul.yml', DOCKER_DIR + 'central-server-config/application.yml');
+                }
+
+                if (this.serviceDiscoveryType === 'eureka') {
+                  this.template(DOCKER_DIR + '_jhipster-registry.yml', DOCKER_DIR + 'jhipster-registry.yml', this, {});
+                  this.copy(DOCKER_DIR + 'config/docker-config/application.yml', DOCKER_DIR + 'central-server-config/docker-config/application.yml');
+                  this.copy(DOCKER_DIR + 'config/localhost-config/application.yml', DOCKER_DIR + 'central-server-config/localhost-config/application.yml');
+                }
             }
 
-            if (this.applicationType === 'microservice' || this.applicationType === 'gateway' || this.serviceDiscoveryType === 'consul') {
-                //this.template(DOCKER_DIR + '_jhipster-registry.yml', DOCKER_DIR + 'jhipster-registry.yml', this, {});
-            }
 
             this.template(DOCKER_DIR + '_sonar.yml', DOCKER_DIR + 'sonar.yml', this, {});
         },
