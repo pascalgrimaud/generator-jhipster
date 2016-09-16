@@ -27,7 +27,7 @@ services:
         <%_ if (searchEngine == 'elasticsearch') { _%>
             - <%= baseName.toLowerCase() %>-elasticsearch:elasticsearch
         <%_ } _%>
-        <%_ if (applicationType == 'microservice' || applicationType == 'gateway' || applicationType == 'uaa') { _%>
+        <%_ if (serviceDiscoveryType == 'eureka' && (applicationType == 'microservice' || applicationType == 'gateway' || applicationType == 'uaa')) { _%>
             - jhipster-registry:registry
         <%_ } _%>
         environment:
