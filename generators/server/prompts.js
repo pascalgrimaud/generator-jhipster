@@ -121,7 +121,7 @@ function askForServerSideOpts() {
                     name: 'No Service Discovery and Configuration'
                 }
             ],
-            default: "eureka"
+            default: 'eureka'
         },
         {
             when: function (response) {
