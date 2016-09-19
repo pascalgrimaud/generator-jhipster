@@ -1018,7 +1018,7 @@ describe('JHipster generator', function () {
         });
     });
 
-    describe('UAA server', function () {
+    describe('UAA server with Eureka', function () {
         beforeEach(function (done) {
             helpers.run(path.join(__dirname, '../generators/app'))
                 .withOptions({skipInstall: true, checkInstall: false})
@@ -1028,6 +1028,7 @@ describe('JHipster generator', function () {
                     'packageName': 'com.mycompany.myapp',
                     'packageFolder': 'com/mycompany/myapp',
                     'serverPort': '9999',
+                    'serviceDiscoveryType': 'eureka',
                     'authenticationType': 'uaa',
                     'hibernateCache': 'no',
                     'databaseType': 'sql',
