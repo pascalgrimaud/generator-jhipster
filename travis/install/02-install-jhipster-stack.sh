@@ -3,17 +3,21 @@ set -ev
 #-------------------------------------------------------------------------------
 # Update npm
 #-------------------------------------------------------------------------------
-npm install -g npm
+# npm install -g npm
 #-------------------------------------------------------------------------------
-# Install yeoman, bower and gulp
+# Install globally yarn
 #-------------------------------------------------------------------------------
-npm install -g yo
-npm install -g bower
-npm install -g gulp-cli
+# npm install -g yarn
+# curl -o- -L https://yarnpkg.com/install.sh | bash
+# export PATH="$HOME/.yarn/bin:$PATH"
+#-------------------------------------------------------------------------------
+# Install globally: yeoman, bower and gulp
+#-------------------------------------------------------------------------------
+# yarn global add yo bower gulp-cli
 #-------------------------------------------------------------------------------
 # Install the latest version of JHipster
 #-------------------------------------------------------------------------------
 cd "$TRAVIS_BUILD_DIR"/
-npm install
-npm link
-npm test
+yarn install
+yarn link
+yarn run test
