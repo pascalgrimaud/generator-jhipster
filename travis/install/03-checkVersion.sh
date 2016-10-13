@@ -7,6 +7,7 @@ java -version
 git --version
 node -v
 npm -v
+yarn --version
 bower -v
 yo --version
 gulp -v

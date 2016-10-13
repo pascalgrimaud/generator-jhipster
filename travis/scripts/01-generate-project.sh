@@ -20,6 +20,11 @@ fi
 mkdir -p "$HOME"/app
 mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER"/.yo-rc.json "$HOME"/app/
 cd "$HOME"/app
-npm link generator-jhipster
-yo jhipster --force --no-insight
+yarn link generator-jhipster
+yo jhipster --force --no-insight --skip-install
+yarn add gulp-imagemin imagemin-gifsicle imagemin-jpegtran imagemin-svgo imagemin-optipng --dev
+yarn install
+yarn install
+bower install
+gulp install
 ls -al "$HOME"/app
