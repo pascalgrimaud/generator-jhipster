@@ -1,18 +1,11 @@
 #!/bin/bash
-set -ev
+
 #-------------------------------------------------------------------------------
 # Functions
 #-------------------------------------------------------------------------------
 moveEntity() {
   local entity="$1"
   mv "$JHIPSTER_SAMPLES"/.jhipster/"$entity".json "$HOME"/app/.jhipster/
-}
-
-generateEntity() {
-  local entity="$1"
-  if [ -a .jhipster/"$entity".json ]; then
-    yo jhipster:entity "$entity" --force --no-insight
-  fi
 }
 
 #-------------------------------------------------------------------------------
@@ -125,63 +118,3 @@ else
 fi
 
 ls -l "$HOME"/app/.jhipster/
-
-#-------------------------------------------------------------------------------
-# Generate the entities with yo jhipster:entity
-#-------------------------------------------------------------------------------
-cd "$HOME"/app
-generateEntity BankAccount
-generateEntity MongoBankAccount
-generateEntity MicroserviceBankAccount
-generateEntity CassBankAccount
-generateEntity Label
-generateEntity MicroserviceLabel
-generateEntity Operation
-generateEntity MicroserviceOperation
-
-generateEntity CassTestEntity
-generateEntity CassTestMapstructEntity
-generateEntity CassTestServiceClassEntity
-generateEntity CassTestServiceImplEntity
-
-generateEntity FieldTestEntity
-generateEntity FieldTestMapstructEntity
-generateEntity FieldTestServiceClassEntity
-generateEntity FieldTestServiceImplEntity
-generateEntity FieldTestInfiniteScrollEntity
-generateEntity FieldTestPagerEntity
-generateEntity FieldTestPaginationEntity
-
-generateEntity TestEntity
-generateEntity TestMapstruct
-generateEntity TestServiceClass
-generateEntity TestServiceImpl
-generateEntity TestInfiniteScroll
-generateEntity TestPager
-generateEntity TestPagination
-generateEntity TestManyToOne
-generateEntity TestManyToMany
-generateEntity TestOneToOne
-generateEntity TestCustomTableName
-generateEntity TestTwoRelationshipsSameEntity
-
-generateEntity EntityWithDTO
-generateEntity EntityWithPagination
-generateEntity EntityWithPaginationAndDTO
-generateEntity EntityWithServiceClass
-generateEntity EntityWithServiceClassAndDTO
-generateEntity EntityWithServiceClassAndPagination
-generateEntity EntityWithServiceClassPaginationAndDTO
-generateEntity EntityWithServiceImpl
-generateEntity EntityWithServiceImplAndDTO
-generateEntity EntityWithServiceImplAndPagination
-generateEntity EntityWithServiceImplPaginationAndDTO
-
-#-------------------------------------------------------------------------------
-# Check Javadoc generation
-#-------------------------------------------------------------------------------
-if [ -f "mvnw" ]; then
-  ./mvnw javadoc:javadoc
-elif [ -f "gradlew" ]; then
-  ./gradlew javadoc
-fi

@@ -8,4 +8,3 @@ atlassian-ide-plugin.xml
 test/temp/
 npm-debug.log
 .vscode
-yarn.lock
