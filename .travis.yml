@@ -9,11 +9,9 @@ jdk:
   - oraclejdk8
 cache:
   directories:
-    - node_modules
     - $HOME/.m2
     - $HOME/.gradle
-    - $HOME/app/node_modules
-    - $HOME/app/node
+    - $HOME/.yarn-cache
 env:
   global:
     - PROFILE=dev
@@ -24,7 +22,7 @@ env:
     - JHIPSTER_SAMPLES=$JHIPSTER_TRAVIS/samples
     - JHIPSTER_SCRIPTS=$JHIPSTER_TRAVIS/scripts
   matrix:
-    - JHIPSTER=app-default-from-scratch JHIPSTER_NODE_CACHE=0 PROFILE=prod RUN_APP=0
+    - JHIPSTER=app-default-from-scratch PROFILE=prod RUN_APP=0
     - JHIPSTER=app-gradle PROTRACTOR=1
     - JHIPSTER=app-mysql PROFILE=prod PROTRACTOR=1
     - JHIPSTER=app-psql-es-noi18n PROFILE=prod PROTRACTOR=1
@@ -48,7 +46,6 @@ before_install:
 install:
   - $JHIPSTER_INSTALL/02-install-jhipster-stack.sh
   - $JHIPSTER_INSTALL/03-checkVersion.sh
-  - $JHIPSTER_INSTALL/04-cache.sh
 script:
   - $JHIPSTER_SCRIPTS/01-generate-project.sh
   - $JHIPSTER_SCRIPTS/02-generate-entities.sh
