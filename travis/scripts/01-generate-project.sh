@@ -13,6 +13,7 @@ if [ "$JHIPSTER" == "app-gateway-uaa" ]; then
     mkdir -p "$HOME"/uaa
     mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER"/uaa/.yo-rc.json "$HOME"/uaa/
     cd "$HOME"/uaa
+    yarn link generator-jhipster
     yo jhipster --force --no-insight
     ls -al "$HOME"/uaa
 fi
@@ -22,8 +23,9 @@ mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER"/.yo-rc.json "$HOME"/app/
 cd "$HOME"/app
 yarn link generator-jhipster
 yo jhipster --force --no-insight --skip-install
-# yarn add gulp-imagemin imagemin-gifsicle imagemin-jpegtran imagemin-svgo imagemin-optipng --dev
-yarn install
-bower install
-gulp install
+if [ -f "package.json" ]; then
+    yarn install
+    bower install
+    gulp install
+fi
 ls -al "$HOME"/app
