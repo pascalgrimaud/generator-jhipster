@@ -18,5 +18,4 @@ yarn global add yo bower gulp-cli
 cd "$TRAVIS_BUILD_DIR"/
 yarn install
 yarn link
-# remove test
-# npm test
+yarn run test
