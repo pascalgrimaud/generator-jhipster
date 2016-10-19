@@ -22,8 +22,7 @@ mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER"/.yo-rc.json "$HOME"/app/
 cd "$HOME"/app
 yarn link generator-jhipster
 yo jhipster --force --no-insight --skip-install
-yarn add gulp-imagemin imagemin-gifsicle imagemin-jpegtran imagemin-svgo imagemin-optipng --dev
-yarn install
+# yarn add gulp-imagemin imagemin-gifsicle imagemin-jpegtran imagemin-svgo imagemin-optipng --dev
 yarn install
 bower install
 gulp install
