@@ -14,7 +14,7 @@ if [ "$JHIPSTER" == "app-gateway-uaa" ]; then
     mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER"/uaa/.yo-rc.json "$HOME"/uaa/
     cd "$HOME"/uaa
     yarn link generator-jhipster
-    yo jhipster --force --no-insight
+    yo jhipster --force --no-insight --skip-install
     ls -al "$HOME"/uaa
 fi
 
