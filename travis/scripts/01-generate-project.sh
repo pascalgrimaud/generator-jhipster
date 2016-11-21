@@ -25,3 +25,4 @@ rm -rf src
 yarn link generator-jhipster
 yo jhipster --force --no-insight --yarn
 ls -al "$HOME"/app
+ls -al "$HOME"/node_modules/
