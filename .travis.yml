@@ -11,9 +11,9 @@ cache:
   yarn: true
   directories:
     - $HOME/.m2
-    - node_modules
     - $HOME/.gradle
     - $HOME/.yarn-cache
+    - node_modules
     - $HOME/app/
 env:
   global:
@@ -53,8 +53,10 @@ before_install:
   - sudo apt-get install -y -qq yarn
   - yarn global add yo bower gulp-cli
 install:
-  - $JHIPSTER_INSTALL/02-install-jhipster-stack.sh
-  # - export PATH="$HOME/.yarn/bin:$PATH"
+  - cd "$TRAVIS_BUILD_DIR"/
+  - yarn install
+  - yarn link
+  - yarn run test
   - $JHIPSTER_INSTALL/03-checkVersion.sh
 script:
   - $JHIPSTER_SCRIPTS/01-generate-project.sh
