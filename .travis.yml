@@ -26,22 +26,22 @@ env:
     - JHIPSTER_SAMPLES=$JHIPSTER_TRAVIS/samples
     - JHIPSTER_SCRIPTS=$JHIPSTER_TRAVIS/scripts
   matrix:
-    # - JHIPSTER=app-default-from-scratch PROFILE=prod RUN_APP=0
-    # - JHIPSTER=app-gradle PROTRACTOR=1
+    - JHIPSTER=app-default-from-scratch PROFILE=prod RUN_APP=0
+    - JHIPSTER=app-gradle PROTRACTOR=1
     - JHIPSTER=app-mysql PROFILE=prod PROTRACTOR=1
     - JHIPSTER=app-psql-es-noi18n PROFILE=prod PROTRACTOR=1
-    # - JHIPSTER=app-social-websocket PROTRACTOR=1
-    # - JHIPSTER=app-cassandra
-    # - JHIPSTER=app-hazelcast-cucumber
-    # - JHIPSTER=app-mongodb
-    # - JHIPSTER=app-oauth2
-    # - JHIPSTER=app-jwt
-    # - JHIPSTER=app-mariadb-kafka
-    # - JHIPSTER=app-gateway-eureka
-    # - JHIPSTER=app-microservice-eureka
-    # - JHIPSTER=app-gateway-consul
-    # - JHIPSTER=app-microservice-consul
-    # - JHIPSTER=app-gateway-uaa
+    - JHIPSTER=app-social-websocket PROTRACTOR=1
+    - JHIPSTER=app-cassandra
+    - JHIPSTER=app-hazelcast-cucumber
+    - JHIPSTER=app-mongodb
+    - JHIPSTER=app-oauth2
+    - JHIPSTER=app-jwt
+    - JHIPSTER=app-mariadb-kafka
+    - JHIPSTER=app-gateway-eureka
+    - JHIPSTER=app-microservice-eureka
+    - JHIPSTER=app-gateway-consul
+    - JHIPSTER=app-microservice-consul
+    - JHIPSTER=app-gateway-uaa
 
 before_install:
   - sudo /etc/init.d/postgresql stop
