@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ev
+
 #-------------------------------------------------------------------------------
 # Force no insight
 #-------------------------------------------------------------------------------
@@ -14,7 +14,7 @@ if [ "$JHIPSTER" == "app-gateway-uaa" ]; then
     mv -f "$JHIPSTER_SAMPLES"/uaa/.yo-rc.json "$HOME"/uaa/
     cd "$HOME"/uaa
     yarn link generator-jhipster
-    yo jhipster --force --no-insight --yarn
+    yo jhipster --force --no-insight --yarn --with-entities
     ls -al "$HOME"/uaa
 fi
 
@@ -23,6 +23,4 @@ mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER"/.yo-rc.json "$HOME"/app/
 cd "$HOME"/app
 rm -rf src
 yarn link generator-jhipster
-yo jhipster --force --no-insight --yarn
-ls -al "$HOME"/app
-ls -al "$HOME"/app/node_modules/
+yo jhipster --force --no-insight --yarn --with-entities

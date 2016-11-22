@@ -23,7 +23,6 @@ env:
     - RUN_APP=1
     - PROTRACTOR=0
     - JHIPSTER_TRAVIS=$TRAVIS_BUILD_DIR/travis
-    - JHIPSTER_INSTALL=$JHIPSTER_TRAVIS/install
     - JHIPSTER_SAMPLES=$JHIPSTER_TRAVIS/samples
     - JHIPSTER_SCRIPTS=$JHIPSTER_TRAVIS/scripts
   matrix:
@@ -54,15 +53,25 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y -qq yarn
   - yarn global add yo bower gulp-cli
+  # Check version
+  - java -version
+  - git --version
+  - node -v
+  - npm -v
+  - yarn --version
+  - bower -v
+  - yo --version
+  - gulp -v
+  - docker version
+  - docker-compose version
 install:
   - cd "$TRAVIS_BUILD_DIR"/
   - yarn install
   - yarn link
   - yarn run test
-  - $JHIPSTER_INSTALL/03-checkVersion.sh
 script:
-  - $JHIPSTER_SCRIPTS/01-generate-project.sh
-  - $JHIPSTER_SCRIPTS/02-generate-entities.sh
+  - $JHIPSTER_SCRIPTS/01-generate-entities.sh
+  - $JHIPSTER_SCRIPTS/02-generate-project.sh
   - $JHIPSTER_SCRIPTS/03-docker-compose.sh
   - $JHIPSTER_SCRIPTS/04-tests.sh
   - $JHIPSTER_SCRIPTS/05-run.sh
