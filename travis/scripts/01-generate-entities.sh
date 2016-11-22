@@ -4,8 +4,8 @@
 # Functions
 #-------------------------------------------------------------------------------
 moveEntity() {
-  local entity="$1"
-  mv "$JHIPSTER_SAMPLES"/.jhipster/"$entity".json "$HOME"/app/.jhipster/
+    local entity="$1"
+    mv "$JHIPSTER_SAMPLES"/.jhipster/"$entity".json "$HOME"/app/.jhipster/
 }
 
 #-------------------------------------------------------------------------------
@@ -13,108 +13,108 @@ moveEntity() {
 #-------------------------------------------------------------------------------
 mkdir -p "$HOME"/app/.jhipster/
 if [ "$JHIPSTER" == "app-mongodb" ]; then
-  moveEntity MongoBankAccount
+    moveEntity MongoBankAccount
 
-  moveEntity FieldTestEntity
-  moveEntity FieldTestMapstructEntity
-  moveEntity FieldTestServiceClassEntity
-  moveEntity FieldTestServiceImplEntity
-  moveEntity FieldTestInfiniteScrollEntity
-  moveEntity FieldTestPagerEntity
-  moveEntity FieldTestPaginationEntity
+    moveEntity FieldTestEntity
+    moveEntity FieldTestMapstructEntity
+    moveEntity FieldTestServiceClassEntity
+    moveEntity FieldTestServiceImplEntity
+    moveEntity FieldTestInfiniteScrollEntity
+    moveEntity FieldTestPagerEntity
+    moveEntity FieldTestPaginationEntity
 
 elif [ "$JHIPSTER" == "app-cassandra" ]; then
-  moveEntity CassBankAccount
+    moveEntity CassBankAccount
 
-  moveEntity CassTestEntity
-  moveEntity CassTestMapstructEntity
-  moveEntity CassTestServiceClassEntity
-  moveEntity CassTestServiceImplEntity
+    moveEntity CassTestEntity
+    moveEntity CassTestMapstructEntity
+    moveEntity CassTestServiceClassEntity
+    moveEntity CassTestServiceImplEntity
 
 elif [[ ("$JHIPSTER" == "app-microservice-eureka") || ("$JHIPSTER" == "app-microservice-consul") ]]; then
-  moveEntity MicroserviceBankAccount
-  moveEntity MicroserviceOperation
-  moveEntity MicroserviceLabel
+    moveEntity MicroserviceBankAccount
+    moveEntity MicroserviceOperation
+    moveEntity MicroserviceLabel
 
-  moveEntity FieldTestEntity
-  moveEntity FieldTestMapstructEntity
-  moveEntity FieldTestServiceClassEntity
-  moveEntity FieldTestServiceImplEntity
-  moveEntity FieldTestInfiniteScrollEntity
-  moveEntity FieldTestPagerEntity
-  moveEntity FieldTestPaginationEntity
+    moveEntity FieldTestEntity
+    moveEntity FieldTestMapstructEntity
+    moveEntity FieldTestServiceClassEntity
+    moveEntity FieldTestServiceImplEntity
+    moveEntity FieldTestInfiniteScrollEntity
+    moveEntity FieldTestPagerEntity
+    moveEntity FieldTestPaginationEntity
 
 elif [[ ("$JHIPSTER" == "app-mysql") || ("$JHIPSTER" == "app-psql-es-noi18n") ]]; then
-  moveEntity BankAccount
-  moveEntity Label
-  moveEntity Operation
+    moveEntity BankAccount
+    moveEntity Label
+    moveEntity Operation
 
-  moveEntity FieldTestEntity
-  moveEntity FieldTestMapstructEntity
-  moveEntity FieldTestServiceClassEntity
-  moveEntity FieldTestServiceImplEntity
-  moveEntity FieldTestInfiniteScrollEntity
-  moveEntity FieldTestPagerEntity
-  moveEntity FieldTestPaginationEntity
+    moveEntity FieldTestEntity
+    moveEntity FieldTestMapstructEntity
+    moveEntity FieldTestServiceClassEntity
+    moveEntity FieldTestServiceImplEntity
+    moveEntity FieldTestInfiniteScrollEntity
+    moveEntity FieldTestPagerEntity
+    moveEntity FieldTestPaginationEntity
 
-  moveEntity TestEntity
-  moveEntity TestMapstruct
-  moveEntity TestServiceClass
-  moveEntity TestServiceImpl
-  moveEntity TestInfiniteScroll
-  moveEntity TestPager
-  moveEntity TestPagination
-  moveEntity TestManyToOne
-  moveEntity TestManyToMany
-  moveEntity TestOneToOne
-  moveEntity TestCustomTableName
-  moveEntity TestTwoRelationshipsSameEntity
+    moveEntity TestEntity
+    moveEntity TestMapstruct
+    moveEntity TestServiceClass
+    moveEntity TestServiceImpl
+    moveEntity TestInfiniteScroll
+    moveEntity TestPager
+    moveEntity TestPagination
+    moveEntity TestManyToOne
+    moveEntity TestManyToMany
+    moveEntity TestOneToOne
+    moveEntity TestCustomTableName
+    moveEntity TestTwoRelationshipsSameEntity
 
-  moveEntity EntityWithDTO
-  moveEntity EntityWithPagination
-  moveEntity EntityWithPaginationAndDTO
-  moveEntity EntityWithServiceClass
-  moveEntity EntityWithServiceClassAndDTO
-  moveEntity EntityWithServiceClassAndPagination
-  moveEntity EntityWithServiceClassPaginationAndDTO
-  moveEntity EntityWithServiceImpl
-  moveEntity EntityWithServiceImplAndDTO
-  moveEntity EntityWithServiceImplAndPagination
-  moveEntity EntityWithServiceImplPaginationAndDTO
+    moveEntity EntityWithDTO
+    moveEntity EntityWithPagination
+    moveEntity EntityWithPaginationAndDTO
+    moveEntity EntityWithServiceClass
+    moveEntity EntityWithServiceClassAndDTO
+    moveEntity EntityWithServiceClassAndPagination
+    moveEntity EntityWithServiceClassPaginationAndDTO
+    moveEntity EntityWithServiceImpl
+    moveEntity EntityWithServiceImplAndDTO
+    moveEntity EntityWithServiceImplAndPagination
+    moveEntity EntityWithServiceImplPaginationAndDTO
 
 elif [ "$JHIPSTER" == "app-gateway-uaa" ]; then
-  moveEntity FieldTestEntity
-  moveEntity FieldTestMapstructEntity
-  moveEntity FieldTestServiceClassEntity
-  moveEntity FieldTestServiceImplEntity
-  moveEntity FieldTestInfiniteScrollEntity
-  moveEntity FieldTestPagerEntity
-  moveEntity FieldTestPaginationEntity
+    moveEntity FieldTestEntity
+    moveEntity FieldTestMapstructEntity
+    moveEntity FieldTestServiceClassEntity
+    moveEntity FieldTestServiceImplEntity
+    moveEntity FieldTestInfiniteScrollEntity
+    moveEntity FieldTestPagerEntity
+    moveEntity FieldTestPaginationEntity
 
 else
-  moveEntity BankAccount
-  moveEntity Label
-  moveEntity Operation
+    moveEntity BankAccount
+    moveEntity Label
+    moveEntity Operation
 
-  moveEntity FieldTestEntity
-  moveEntity FieldTestMapstructEntity
-  moveEntity FieldTestServiceClassEntity
-  moveEntity FieldTestServiceImplEntity
-  moveEntity FieldTestInfiniteScrollEntity
-  moveEntity FieldTestPagerEntity
-  moveEntity FieldTestPaginationEntity
+    moveEntity FieldTestEntity
+    moveEntity FieldTestMapstructEntity
+    moveEntity FieldTestServiceClassEntity
+    moveEntity FieldTestServiceImplEntity
+    moveEntity FieldTestInfiniteScrollEntity
+    moveEntity FieldTestPagerEntity
+    moveEntity FieldTestPaginationEntity
 
-  moveEntity EntityWithDTO
-  moveEntity EntityWithPagination
-  moveEntity EntityWithPaginationAndDTO
-  moveEntity EntityWithServiceClass
-  moveEntity EntityWithServiceClassAndDTO
-  moveEntity EntityWithServiceClassAndPagination
-  moveEntity EntityWithServiceClassPaginationAndDTO
-  moveEntity EntityWithServiceImpl
-  moveEntity EntityWithServiceImplAndDTO
-  moveEntity EntityWithServiceImplAndPagination
-  moveEntity EntityWithServiceImplPaginationAndDTO
+    moveEntity EntityWithDTO
+    moveEntity EntityWithPagination
+    moveEntity EntityWithPaginationAndDTO
+    moveEntity EntityWithServiceClass
+    moveEntity EntityWithServiceClassAndDTO
+    moveEntity EntityWithServiceClassAndPagination
+    moveEntity EntityWithServiceClassPaginationAndDTO
+    moveEntity EntityWithServiceImpl
+    moveEntity EntityWithServiceImplAndDTO
+    moveEntity EntityWithServiceImplAndPagination
+    moveEntity EntityWithServiceImplPaginationAndDTO
 fi
 
 ls -l "$HOME"/app/.jhipster/
