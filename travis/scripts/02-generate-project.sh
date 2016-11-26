@@ -18,10 +18,9 @@ if [ "$JHIPSTER" == "app-gateway-uaa" ]; then
     ls -al "$HOME"/uaa
 fi
 
+rm -rf "$HOME"/app
 mkdir -p "$HOME"/app
 mv -f "$JHIPSTER_SAMPLES"/"$JHIPSTER"/.yo-rc.json "$HOME"/app/
 cd "$HOME"/app
-rm -rf src
 yarn link generator-jhipster
-rm -Rf "$HOME"/app/node_modules/karma-phantomjs-launcher
 yo jhipster --force --no-insight --yarn --with-entities
