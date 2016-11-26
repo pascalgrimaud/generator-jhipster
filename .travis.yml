@@ -16,7 +16,7 @@ cache:
     - node_modules
     - $HOME/app/
 before_cache:
-  - rm -rf $HOME/app/*.war $HOME/app/target/ $HOME/app/target $HOME/app/build $HOME/app/node_modules/generator-jhipster
+  - rm -rf $HOME/app/*.war $HOME/app/target/ $HOME/app/target $HOME/app/build $HOME/app/node_modules/generator-jhipster $HOME/app/node_modules/karma-phantomjs-launcher
 env:
   global:
     - PROFILE=dev
