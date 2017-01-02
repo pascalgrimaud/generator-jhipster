@@ -27,6 +27,9 @@
     "languages": [
       "en"
     ],
-  "travis": true
+    "travis": true,
+    "jhipsterVersion": "3.12.1",
+    "clientFramework": "angular1",
+    "clientPackageManager": "yarn"
   }
 }

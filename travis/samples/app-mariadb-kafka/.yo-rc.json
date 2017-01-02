@@ -29,6 +29,10 @@
       "en",
       "fr"
     ],
-  "travis": true
+    "travis": true,
+    "jhipsterVersion": "3.12.1",
+    "serviceDiscoveryType": false,
+    "clientPackageManager": "yarn",
+    "clientFramework": "angular1"
   }
 }
