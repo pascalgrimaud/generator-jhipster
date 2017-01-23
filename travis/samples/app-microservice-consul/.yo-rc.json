@@ -21,7 +21,8 @@
       "fr"
     ],
     "testFrameworks": [
-      "gatling"
+      "gatling",
+      "protractor"
     ],
     "skipClient": true,
     "skipUserManagement": true,
@@ -31,7 +32,7 @@
     "websocket": false,
     "messageBroker": false,
     "enableSocialSignIn": false,
-    "clientFramework": "angular1",
+    "clientFramework": "angular2",
     "clientPackageManager": "yarn"
   }
 }

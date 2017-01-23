@@ -22,7 +22,8 @@
     ],
     "enableSocialSignIn": false,
     "testFrameworks": [
-      "gatling"
+      "gatling",
+      "protractor"
     ],
     "serverPort": "8080",
     "jhiPrefix": "jhi",
@@ -31,6 +32,6 @@
     "serviceDiscoveryType": false,
     "jwtSecretKey": "a99f69fb374dc5df85ffb7f519d7bd981d654a28",
     "clientPackageManager": "yarn",
-    "clientFramework": "angular1"
+    "clientFramework": "angular2"
   }
 }
