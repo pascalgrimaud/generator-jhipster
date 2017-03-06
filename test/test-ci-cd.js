@@ -6,12 +6,18 @@ var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 var fse = require('fs-extra');
 
+const constants = require('../generators/generator-constants'),
+    SERVER_MAIN_RES_DIR = constants.SERVER_MAIN_RES_DIR,
+    DOCKER_DIR = constants.DOCKER_DIR;
+
 const expectedFiles = {
     travis: [
         '.travis.yml'
     ],
     jenkins: [
-        'Jenkinsfile'
+        'Jenkinsfile',
+        DOCKER_DIR + 'jenkins.yml',
+        SERVER_MAIN_RES_DIR + 'idea.gdsl'
     ],
     gitlab: [
         '.gitlab-ci.yml'
