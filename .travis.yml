@@ -1,3 +1,4 @@
+group: edge
 os:
   - linux
 services:
