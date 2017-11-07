@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/generator-jhipster
+    machine: true
+    steps:
+      - checkout
+      - run: sudo service docker stop
+      - run:
+          name: Install last version of Docker
+          command: curl -fsSL https://get.docker.com/ | sudo sh
+      - run: docker version
+      - run:
+          name: Install Docker Compose
+          command: |
+            set -x
+            curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > docker-compose
+            sudo mv docker-compose /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+      - run:
+          name: Install Yarn
+          command: |
+            curl -o- -L https://yarnpkg.com/install.sh | bash
+            export PATH=$HOME/.yarn/bin:$PATH
+            yarn -v
+            yarn global add yo bower gulp-cli
+      - run:
+          name: Check version
+          command: |
+            java -version
+            yarn -v
