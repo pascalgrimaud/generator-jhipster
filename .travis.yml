@@ -4,7 +4,7 @@ services:
   - docker
 language: node_js
 node_js:
-  - "8.9.3"
+  - "8.9.4"
 jdk:
   - oraclejdk8
 addons:
@@ -22,7 +22,20 @@ env:
     - PROFILE=dev
     - RUN_APP=1
     - PROTRACTOR=0
+
+    - JHIPSTER_REPO=https://github.com/jhipster/generator-jhipster.git
+    - JHIPSTER_BRANCH=master
+    # if the JHIPSTER_DEPENDENCIES_BRANCH value is release,
+    # it won't clone the project but use the release from Maven
+    - JHIPSTER_DEPENDENCIES_REPO=https://github.com/jhipster/jhipster-dependencies.git
+    - JHIPSTER_DEPENDENCIES_BRANCH=release
+    # if the JHIPSTER_LIB_BRANCH value is release,
+    # it won't clone the project but use the release from Maven
+    - JHIPSTER_LIB_REPO=https://github.com/jhipster/jhipster.git
+    - JHIPSTER_LIB_BRANCH=release
+
     - JHIPSTER_TRAVIS=$TRAVIS_BUILD_DIR/travis
+    - JHIPSTER_INSTALL=$JHIPSTER_TRAVIS/install
     - JHIPSTER_SAMPLES=$JHIPSTER_TRAVIS/samples
     - JHIPSTER_SCRIPTS=$JHIPSTER_TRAVIS/scripts
     - APP_FOLDER=$HOME/app
@@ -63,12 +76,7 @@ before_install:
   - yarn -v
   - yarn global add yo bower gulp-cli
 install:
-  - cd "$TRAVIS_BUILD_DIR"/
-  - yarn install
-  - yarn global add file:"$TRAVIS_BUILD_DIR"
-  - if [ "$JHIPSTER" == "ngx-default" ]; then
-        yarn test;
-    fi
+  - $JHIPSTER_INSTALL/install-jhipster.sh
   - $JHIPSTER_SCRIPTS/01-generate-entities.sh
   - $JHIPSTER_SCRIPTS/02-generate-project.sh
 script:
