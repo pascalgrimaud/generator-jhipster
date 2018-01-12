@@ -22,18 +22,6 @@ env:
     - PROFILE=dev
     - RUN_APP=1
     - PROTRACTOR=0
-
-    - JHIPSTER_REPO=https://github.com/jhipster/generator-jhipster.git
-    - JHIPSTER_BRANCH=master
-    # if the JHIPSTER_DEPENDENCIES_BRANCH value is release,
-    # it won't clone the project but use the release from Maven
-    - JHIPSTER_DEPENDENCIES_REPO=https://github.com/jhipster/jhipster-dependencies.git
-    - JHIPSTER_DEPENDENCIES_BRANCH=release
-    # if the JHIPSTER_LIB_BRANCH value is release,
-    # it won't clone the project but use the release from Maven
-    - JHIPSTER_LIB_REPO=https://github.com/jhipster/jhipster.git
-    - JHIPSTER_LIB_BRANCH=release
-
     - JHIPSTER_TRAVIS=$TRAVIS_BUILD_DIR/travis
     - JHIPSTER_INSTALL=$JHIPSTER_TRAVIS/install
     - JHIPSTER_SAMPLES=$JHIPSTER_TRAVIS/samples
@@ -43,6 +31,17 @@ env:
     # environment properties
     - SPRING_OUTPUT_ANSI_ENABLED=ALWAYS
     - SPRING_JPA_SHOW_SQL=false
+
+    # if JHIPSTER_DEPENDENCIES_BRANCH value is release, use the release from Maven
+    - JHIPSTER_DEPENDENCIES_REPO=https://github.com/jhipster/jhipster-dependencies.git
+    - JHIPSTER_DEPENDENCIES_BRANCH=release
+    # if JHIPSTER_LIB_BRANCH value is release, use the release from Maven
+    - JHIPSTER_LIB_REPO=https://github.com/jhipster/jhipster.git
+    - JHIPSTER_LIB_BRANCH=release
+    # if JHIPSTER_BRANCH value is release, use the release from NPM
+    - JHIPSTER_REPO=https://github.com/generator-jhipster/jhipster.git
+    - JHIPSTER_BRANCH=release
+
   matrix:
     - JHIPSTER=ngx-default PROFILE=prod PROTRACTOR=1
     - JHIPSTER=ngx-psql-es-noi18n PROFILE=prod PROTRACTOR=1
