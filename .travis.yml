@@ -22,21 +22,18 @@ env:
     - PROFILE=dev
     - RUN_APP=1
     - PROTRACTOR=0
-
-    - JHIPSTER_REPO=https://github.com/jhipster/generator-jhipster.git
-    - JHIPSTER_BRANCH=master
     # if the JHIPSTER_DEPENDENCIES_BRANCH value is release,
     # it won't clone the project but use the release from Maven
     - JHIPSTER_DEPENDENCIES_REPO=https://github.com/jhipster/jhipster-dependencies.git
-    - JHIPSTER_DEPENDENCIES_BRANCH=release
+    - JHIPSTER_DEPENDENCIES_BRANCH=spring-boot-2
     # if the JHIPSTER_LIB_BRANCH value is release,
     # it won't clone the project but use the release from Maven
     - JHIPSTER_LIB_REPO=https://github.com/jhipster/jhipster.git
-    - JHIPSTER_LIB_BRANCH=release
+    - JHIPSTER_LIB_BRANCH=spring-boot-2
 
     - JHIPSTER_TRAVIS=$TRAVIS_BUILD_DIR/travis
-    - JHIPSTER_INSTALL=$JHIPSTER_TRAVIS/install
     - JHIPSTER_SAMPLES=$JHIPSTER_TRAVIS/samples
+    - JHIPSTER_INSTALL=$JHIPSTER_TRAVIS/install
     - JHIPSTER_SCRIPTS=$JHIPSTER_TRAVIS/scripts
     - APP_FOLDER=$HOME/app
     - UAA_APP_FOLDER=$HOME/uaa
@@ -47,18 +44,18 @@ env:
     - JHIPSTER=ngx-default PROFILE=prod PROTRACTOR=1
     - JHIPSTER=ngx-psql-es-noi18n PROFILE=prod PROTRACTOR=1
     - JHIPSTER=ngx-gradle-fr PROFILE=prod PROTRACTOR=1
-    - JHIPSTER=ngx-mariadb-oauth2-sass-infinispan PROTRACTOR=1
-    - JHIPSTER=ngx-h2mem-social-ws-nol2
-    - JHIPSTER=ngx-mongodb-kafka-cucumber
-    - JHIPSTER=ngx-session-cassandra-fr
-    - JHIPSTER=ngx-couchbase
-    - JHIPSTER=ms-ngx-gateway-eureka
-    - JHIPSTER=ms-ngx-gateway-consul
-    - JHIPSTER=ms-ngx-gateway-uaa
-    - JHIPSTER=ms-micro-eureka
-    - JHIPSTER=ms-micro-consul
-    - JHIPSTER=react-default
-    - JHIPSTER=ng1-default
+    # - JHIPSTER=ngx-mariadb-oauth2-sass-infinispan PROTRACTOR=1
+    # - JHIPSTER=ngx-h2mem-social-ws-nol2
+    # - JHIPSTER=ngx-mongodb-kafka-cucumber
+    # - JHIPSTER=ngx-session-cassandra-fr
+    # - JHIPSTER=ngx-couchbase
+    # - JHIPSTER=ms-ngx-gateway-eureka
+    # - JHIPSTER=ms-ngx-gateway-consul
+    # - JHIPSTER=ms-ngx-gateway-uaa
+    # - JHIPSTER=ms-micro-eureka
+    # - JHIPSTER=ms-micro-consul
+    # - JHIPSTER=react-default
+    # - JHIPSTER=ng1-default
 
 before_install:
   - jdk_switcher use oraclejdk8
