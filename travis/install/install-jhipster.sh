@@ -10,7 +10,8 @@ ls -al "$HOME"
 # Install JHipster Dependencies
 #-------------------------------------------------------------------------------
 cd "$HOME"
-if [[ "$TRAVIS_REPO_SLUG" == *"/jhipster-dependencies" || "$JHIPSTER_DEPENDENCIES_REPO" == "" ]]; then
+
+if [[ "$TRAVIS_REPO_SLUG" == *"/jhipster-dependencies" ]]; then
     echo "TRAVIS_REPO_SLUG=$TRAVIS_REPO_SLUG"
     echo "No need to clone jhipster-dependencies: use local version"
 
@@ -39,7 +40,7 @@ fi
 # Install JHipster lib
 #-------------------------------------------------------------------------------
 cd "$HOME"
-if [[ "$TRAVIS_REPO_SLUG" == *"/jhipster" || "$JHIPSTER_LIB_REPO" == "" ]]; then
+if [[ "$TRAVIS_REPO_SLUG" == *"/jhipster" ]]; then
     echo "TRAVIS_REPO_SLUG=$TRAVIS_REPO_SLUG"
     echo "No need to clone jhipster: use local version"
 
@@ -68,7 +69,7 @@ fi
 # Install JHipster Generator
 #-------------------------------------------------------------------------------
 cd "$HOME"
-if [[ "$TRAVIS_REPO_SLUG" == *"/generator-jhipster" || "$JHIPSTER_REPO" == "" ]]; then
+if [[ "$TRAVIS_REPO_SLUG" == *"/generator-jhipster" ]]; then
     echo "TRAVIS_REPO_SLUG=$TRAVIS_REPO_SLUG"
     echo "No need to clone generator-jhipster: use local version"
 
