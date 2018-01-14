@@ -38,6 +38,10 @@ jobs:
           command: curl -fsSL https://get.docker.com/ | sudo sh
       - run: docker version
       - run:
+          name: TMP Test env variables
+          command: |
+            echo $JHIPSTER_SCRIPTS
+      - run:
           name: Install Docker Compose
           command: |
             set -x
