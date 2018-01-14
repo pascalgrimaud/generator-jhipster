@@ -2,16 +2,23 @@ version: 2
 jobs:
   build:
     working_directory: ~/generator-jhipster
-    environment:
-      - JHIPSTER_TRAVIS="${HOME}"/generator-jhipster/travis
-      - JHIPSTER_SAMPLES="${HOME}"/generator-jhipster/travis/samples
-      - JHIPSTER_SCRIPTS="${HOME}"/generator-jhipster/travis/scripts
     machine:
       environment:
         PATH: "${PATH}:${HOME}/.yarn/bin:${PATH}"
+        JHIPSTER_TRAVIS: "${HOME}"/generator-jhipster/travis
+        JHIPSTER_SAMPLES: "${HOME}"/generator-jhipster/travis/samples
+        JHIPSTER_SCRIPTS: "${HOME}"/generator-jhipster/travis/scripts
     steps:
       - checkout
-      - run: docker version
+      - run:
+          name: check
+          command: |
+            docker version
+            echo $PATH
+            echo $JHIPSTER_TRAVIS
+            echo $JHIPSTER_SAMPLES
+            echo $JHIPSTER_SCRIPTS
+            echo $HOME
       - run: sudo service docker stop
       - run:
           name: Install last version of Docker
