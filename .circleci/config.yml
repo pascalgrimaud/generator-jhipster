@@ -3,9 +3,9 @@ jobs:
   build:
     environment:
       - FOO: "bar"
-      - JHIPSTER_TRAVIS: "${HOME}"/circleci/generator-jhipster/travis
+      - JHIPSTER_TRAVIS: ${HOME}/circleci/generator-jhipster/travis
       - JHIPSTER_SAMPLES: ${HOME}/circleci/generator-jhipster/travis/samples
-      - JHIPSTER_SCRIPTS: "$HOME"/generator-jhipster/travis/scripts
+      - JHIPSTER_SCRIPTS: $HOME/generator-jhipster/travis/scripts
     working_directory: ~/generator-jhipster
     machine:
       environment:
