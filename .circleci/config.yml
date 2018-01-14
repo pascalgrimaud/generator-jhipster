@@ -2,33 +2,13 @@ version: 2
 jobs:
   build:
     working_directory: ~/generator-jhipster
+    environment:
+      - JHIPSTER_TRAVIS=$HOME/generator-jhipster/travis
+      - JHIPSTER_SAMPLES=$HOME/generator-jhipster/travis/samples
+      - JHIPSTER_SCRIPTS=$HOME/generator-jhipster/travis/scripts
     machine:
       environment:
         PATH: "${PATH}:${HOME}/.yarn/bin:${PATH}"
-        PROFILE: dev
-        RUN_APP: 1
-        PROTRACTOR: 0
-        JHIPSTER_TRAVIS: $HOME/generator-jhipster/travis
-        JHIPSTER_SAMPLES: $JHIPSTER_TRAVIS/samples
-        JHIPSTER_SCRIPTS: $JHIPSTER_TRAVIS/scripts
-        APP_FOLDER: $HOME/app
-        UAA_APP_FOLDER: $HOME/uaa
-        # environment properties
-        SPRING_OUTPUT_ANSI_ENABLED: ALWAYS
-        SPRING_JPA_SHOW_SQL: false
-
-        # if JHIPSTER_DEPENDENCIES_BRANCH value is release, use the release from Maven
-        JHIPSTER_DEPENDENCIES_REPO: https://github.com/jhipster/jhipster-dependencies.git
-        JHIPSTER_DEPENDENCIES_BRANCH: release
-        # if JHIPSTER_LIB_BRANCH value is release, use the release from Maven
-        JHIPSTER_LIB_REPO: https://github.com/jhipster/jhipster.git
-        JHIPSTER_LIB_BRANCH: release
-        # if JHIPSTER_BRANCH value is release, use the release from NPM
-        JHIPSTER_REPO: https://github.com/generator-jhipster/jhipster.git
-        JHIPSTER_BRANCH: release
-    # dependencies:
-    #   override:
-    #     - yarn
     steps:
       - checkout
       - run: docker version
