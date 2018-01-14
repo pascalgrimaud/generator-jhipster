@@ -5,6 +5,27 @@ jobs:
     machine:
       environment:
         PATH: "${PATH}:${HOME}/.yarn/bin:${PATH}"
+        PROFILE: dev
+        RUN_APP: 1
+        PROTRACTOR: 0
+        JHIPSTER_TRAVIS: $TRAVIS_BUILD_DIR/travis
+        JHIPSTER_SAMPLES: $JHIPSTER_TRAVIS/samples
+        JHIPSTER_SCRIPTS: $JHIPSTER_TRAVIS/scripts
+        APP_FOLDER: $HOME/app
+        UAA_APP_FOLDER: $HOME/uaa
+        # environment properties
+        SPRING_OUTPUT_ANSI_ENABLED: ALWAYS
+        SPRING_JPA_SHOW_SQL: false
+
+        # if JHIPSTER_DEPENDENCIES_BRANCH value is release, use the release from Maven
+        JHIPSTER_DEPENDENCIES_REPO: https://github.com/jhipster/jhipster-dependencies.git
+        JHIPSTER_DEPENDENCIES_BRANCH: release
+        # if JHIPSTER_LIB_BRANCH value is release, use the release from Maven
+        JHIPSTER_LIB_REPO: https://github.com/jhipster/jhipster.git
+        JHIPSTER_LIB_BRANCH: release
+        # if JHIPSTER_BRANCH value is release, use the release from NPM
+        JHIPSTER_REPO: https://github.com/generator-jhipster/jhipster.git
+        JHIPSTER_BRANCH: release
     # dependencies:
     #   override:
     #     - yarn
@@ -20,7 +41,7 @@ jobs:
           name: Install Docker Compose
           command: |
             set -x
-            curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > docker-compose
+            curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` > docker-compose
             sudo mv docker-compose /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
       - run:
@@ -34,5 +55,13 @@ jobs:
       - run:
           name: Check version
           command: |
+            node -v
             java -version
             yarn -v
+            git version
+            docker version
+            docker-compose version
+      - run:
+          name: Installation
+          command: |
+            $JHIPSTER_SCRIPTS/00-install-jhipster.sh
