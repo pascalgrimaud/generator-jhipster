@@ -5,6 +5,7 @@ jobs:
     machine: true
     steps:
       - checkout
+      - run: docker version
       - run: sudo service docker stop
       - run:
           name: Install last version of Docker
@@ -21,6 +22,7 @@ jobs:
           name: Install Yarn
           command: |
             curl -o- -L https://yarnpkg.com/install.sh | bash
+            export PATH=$HOME/.yarn/bin:$PATH
             echo 'export PATH=$HOME/.yarn/bin:$PATH' >> $BASH_ENV
             yarn -v
             yarn global add yo bower gulp-cli
