@@ -5,9 +5,9 @@ jobs:
     machine:
       environment:
         PATH: "${PATH}:${HOME}/.yarn/bin:${PATH}"
-        JHIPSTER_TRAVIS: "${HOME}"/generator-jhipster/travis
-        JHIPSTER_SAMPLES: "${HOME}"/generator-jhipster/travis/samples
-        JHIPSTER_SCRIPTS: "${HOME}"/generator-jhipster/travis/scripts
+        JHIPSTER_TRAVIS: "${HOME}/generator-jhipster/travis"
+        JHIPSTER_SAMPLES: "${HOME}/generator-jhipster/travis/samples"
+        JHIPSTER_SCRIPTS: "${HOME}/generator-jhipster/travis/scripts"
     steps:
       - checkout
       - run:
