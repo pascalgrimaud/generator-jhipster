@@ -2,10 +2,9 @@ version: 2
 jobs:
   build:
     environment:
-      - FOO: "bar"
-      - JHIPSTER_TRAVIS: ${HOME}/circleci/generator-jhipster/travis
-      - JHIPSTER_SAMPLES: ${HOME}/circleci/generator-jhipster/travis/samples
-      - JHIPSTER_SCRIPTS: $HOME/generator-jhipster/travis/scripts
+      - JHIPSTER_TRAVIS: /home/circleci/generator-jhipster/travis
+      - JHIPSTER_SAMPLES: /home/circleci/generator-jhipster/travis/samples
+      - JHIPSTER_SCRIPTS: /home/circleci/generator-jhipster/travis/scripts
     working_directory: ~/generator-jhipster
     machine:
       environment:
@@ -55,4 +54,4 @@ jobs:
       - run:
           name: Installation
           command: |
-            sh "$JHIPSTER_SCRIPTS"/00-install-jhipster.sh
+            "$JHIPSTER_SCRIPTS"/00-install-jhipster.sh
