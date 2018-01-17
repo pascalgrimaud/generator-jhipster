@@ -10,7 +10,7 @@ ls -al "$HOME"
 # Install JHipster Dependencies
 #-------------------------------------------------------------------------------
 cd "$HOME"
-if [[ "$TRAVIS_REPO_SLUG" == *"/jhipster-dependencies" ]]; then
+if [[ "$TRAVIS_REPO_SLUG" == *"/jhipster-dependencies" || "$CIRCLE_PROJECT_REPONAME" == "jhipster-dependencies" ]]; then
     echo "TRAVIS_REPO_SLUG=$TRAVIS_REPO_SLUG"
     echo "No need to clone jhipster-dependencies: use local version"
 
@@ -39,7 +39,7 @@ fi
 # Install JHipster lib
 #-------------------------------------------------------------------------------
 cd "$HOME"
-if [[ "$TRAVIS_REPO_SLUG" == *"/jhipster" ]]; then
+if [[ "$TRAVIS_REPO_SLUG" == *"/jhipster"  || "$CIRCLE_PROJECT_REPONAME" == "jhipster" ]]; then
     echo "TRAVIS_REPO_SLUG=$TRAVIS_REPO_SLUG"
     echo "No need to clone jhipster: use local version"
 
@@ -68,11 +68,15 @@ fi
 # Install JHipster Generator
 #-------------------------------------------------------------------------------
 cd "$HOME"
-if [[ "$TRAVIS_REPO_SLUG" == *"/generator-jhipster" ]]; then
+if [[ "$TRAVIS_REPO_SLUG" == *"/generator-jhipster" || "$CIRCLE_PROJECT_REPONAME" == "generator-jhipster" ]]; then
     echo "TRAVIS_REPO_SLUG=$TRAVIS_REPO_SLUG"
     echo "No need to clone generator-jhipster: use local version"
 
-    cd "$TRAVIS_BUILD_DIR"/
+    if [[ "$CIRCLE_PROJECT_REPONAME" == "generator-jhipster" ]]; then
+        cd "$HOME"/generator-jhipster/
+    else
+        cd "$TRAVIS_BUILD_DIR"/
+    fi
     yarn install
     yarn global add file:"$TRAVIS_BUILD_DIR"
     if [[ "$JHIPSTER" == "" || "$JHIPSTER" == "ngx-default" ]]; then
