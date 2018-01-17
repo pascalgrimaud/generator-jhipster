@@ -61,10 +61,7 @@ jobs:
       - run:
           name: install Node
           command: |
-            VERSION=8.9.4
-            wget http://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-x64.tar.gz
-            mkdir -p /opt/circleci/.nvm/versions/v8.9.4/
-            sudo tar -C /opt/circleci/.nvm/versions/v8.9.4/ --strip-components 1 -xzf node-v$VERSION-linux-x64.tar.gz
+            nvm install v8.9.4
             nvm use 8.9.4
       - run:
           name: Install Yarn, then yo, bower and gulp-cli
