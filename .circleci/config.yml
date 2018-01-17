@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Check variables
           command: |
-            java -v
+            java -version
             node -v
             docker version
             echo $PATH
