@@ -1,19 +1,31 @@
 version: 2
 jobs:
   build:
+    machine:
+      node:
+        version: 8.9.4
+      environment:
+        PATH: "${PATH}:${HOME}/.yarn/bin:${PATH}"
     environment:
       - JHIPSTER_TRAVIS: /home/circleci/generator-jhipster/travis
       - JHIPSTER_SAMPLES: /home/circleci/generator-jhipster/travis/samples
       - JHIPSTER_SCRIPTS: /home/circleci/generator-jhipster/travis/scripts
+      - JHIPSTER_DEPENDENCIES_REPO: https://github.com/jhipster/jhipster-dependencies.git
+      - JHIPSTER_DEPENDENCIES_BRANCH: release
+      - JHIPSTER_LIB_REPO: https://github.com/jhipster/jhipster.git
+      - JHIPSTER_LIB_BRANCH: release
+      - JHIPSTER_REPO: https://github.com/jhipster/generator-jhipster.git
+      - JHIPSTER_BRANCH: release
+      - TOTO_TEST_1: $CIRCLE_PROJECT_REPONAME
+      - TOTO_TEST_2: ${CIRCLE_PROJECT_REPONAME}
     working_directory: ~/generator-jhipster
-    machine:
-      environment:
-        PATH: "${PATH}:${HOME}/.yarn/bin:${PATH}"
     steps:
       - checkout
       - run:
-          name: check
+          name: Check variables
           command: |
+            java -v
+            node -v
             docker version
             echo $PATH
             echo $JHIPSTER_TRAVIS
@@ -22,11 +34,14 @@ jobs:
             echo $HOME
             echo $FOO
             echo "$FOO"
-      - run: sudo service docker stop
+            echo $TOTO_TEST_1
+            echo $TOTO_TEST_2
       - run:
           name: Install last version of Docker
-          command: curl -fsSL https://get.docker.com/ | sudo sh
-      - run: docker version
+          command: |
+            sudo service docker stop
+            curl -fsSL https://get.docker.com/ | sudo sh
+            docker version
       - run:
           name: Install Docker Compose
           command: |
@@ -34,8 +49,9 @@ jobs:
             curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` > docker-compose
             sudo mv docker-compose /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
+            docker-compose version
       - run:
-          name: Install Yarn
+          name: Install Yarn, then yo, bower and gulp-cli
           command: |
             curl -o- -L https://yarnpkg.com/install.sh | bash
             export PATH=$HOME/.yarn/bin:$PATH
