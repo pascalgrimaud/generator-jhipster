@@ -1,9 +1,9 @@
 version: 2
 jobs:
   build:
-    machine: true
-      # node:
-      #   version: 8.9.4
+    machine:
+      node:
+        version: 8.9.4
       # environment:
       #   PATH: "${PATH}:${HOME}/.yarn/bin:${PATH}"
     environment:
@@ -62,6 +62,11 @@ jobs:
           name: install Node
           command: |
             nvm install v8.9.4
+            nvm use 8.9.4
+            VERSION=8.9.4
+            wget http://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-x64.tar.gz
+            mkdir -p /opt/circleci/.nvm/versions/node/v8.9.4/
+            sudo tar -C /opt/circleci/.nvm/versions/node/v8.9.4/ --strip-components 1 -xzf node-v$VERSION-linux-x64.tar.gz
             nvm use 8.9.4
       - run:
           name: Install Yarn, then yo, bower and gulp-cli
