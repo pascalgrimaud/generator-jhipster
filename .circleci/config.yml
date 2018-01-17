@@ -1,11 +1,11 @@
 version: 2
 jobs:
   build:
-    machine:
-      node:
-        version: 8.9.4
-      environment:
-        PATH: "${PATH}:${HOME}/.yarn/bin:${PATH}"
+    machine: true
+      # node:
+      #   version: 8.9.4
+      # environment:
+      #   PATH: "${PATH}:${HOME}/.yarn/bin:${PATH}"
     environment:
       - JHIPSTER_TRAVIS: /home/circleci/generator-jhipster/travis
       - JHIPSTER_SAMPLES: /home/circleci/generator-jhipster/travis/samples
@@ -44,7 +44,6 @@ jobs:
             echo $JHIPSTER_BRANCH
             echo $TRAVIS_REPO_SLUG
             echo $TRAVIS_BUILD_DIR
-
       - run:
           name: Install last version of Docker
           command: |
@@ -60,6 +59,14 @@ jobs:
             sudo chmod +x /usr/local/bin/docker-compose
             docker-compose version
       - run:
+          name: install Node
+          command: |
+            VERSION=8.9.4
+            wget http://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-x64.tar.gz
+            mkdir -p /opt/circleci/.nvm/versions/v8.9.4/
+            sudo tar -C /opt/circleci/.nvm/versions/v8.9.4/ --strip-components 1 -xzf node-v$VERSION-linux-x64.tar.gz
+            nvm use 8.9.4
+      - run:
           name: Install Yarn, then yo, bower and gulp-cli
           command: |
             curl -o- -L https://yarnpkg.com/install.sh | bash
@@ -68,7 +75,7 @@ jobs:
             yarn -v
             yarn global add yo bower gulp-cli
       - run:
-          name: Check version
+          name: Check Version
           command: |
             node -v
             java -version
