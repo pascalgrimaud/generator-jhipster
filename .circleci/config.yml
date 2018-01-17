@@ -32,8 +32,6 @@ jobs:
             echo $JHIPSTER_SAMPLES
             echo $JHIPSTER_SCRIPTS
             echo $HOME
-            echo $FOO
-            echo "$FOO"
             echo $TOTO_TEST_1
             echo $TOTO_TEST_2
       - run:
