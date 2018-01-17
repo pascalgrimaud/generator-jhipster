@@ -19,6 +19,7 @@ jobs:
     working_directory: ~/generator-jhipster
     steps:
       - checkout
+      # See https://circleci.com/docs/2.0/env-vars/#interpolating-environment-variables-to-set-other-environment-variables
       - run:
           name: Interpolating Environnement Variables
           command: |
@@ -78,4 +79,4 @@ jobs:
       - run:
           name: Installation
           command: |
-            sh "$JHIPSTER_SCRIPTS"/00-install-jhipster.sh
+            "$JHIPSTER_SCRIPTS"/00-install-jhipster.sh
