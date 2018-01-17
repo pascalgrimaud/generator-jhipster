@@ -20,10 +20,10 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Interpolating Environnement Variables
-        command: |
-          echo 'export TRAVIS_REPO_SLUG=$CIRCLE_PROJECT_USERNAME/CIRCLE_PROJECT_REPONAME' >> $BASH_ENV
-          echo 'export TRAVIS_BUILD_DIR=$HOME/$CIRCLE_PROJECT_REPONAME' >> $BASH_ENV
+          name: Interpolating Environnement Variables
+          command: |
+            echo 'export TRAVIS_REPO_SLUG=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME' >> $BASH_ENV
+            echo 'export TRAVIS_BUILD_DIR=$HOME/$CIRCLE_PROJECT_REPONAME' >> $BASH_ENV
       - run:
           name: Check variables
           command: |
