@@ -16,8 +16,6 @@ jobs:
       - JHIPSTER_LIB_BRANCH: release
       - JHIPSTER_REPO: https://github.com/jhipster/generator-jhipster.git
       - JHIPSTER_BRANCH: release
-      - TOTO_TEST_1: $CIRCLE_PROJECT_REPONAME
-      - TOTO_TEST_2: ${CIRCLE_PROJECT_REPONAME}
     working_directory: ~/generator-jhipster
     steps:
       - checkout
@@ -28,12 +26,17 @@ jobs:
             node -v
             docker version
             echo $PATH
+            echo $HOME
             echo $JHIPSTER_TRAVIS
             echo $JHIPSTER_SAMPLES
             echo $JHIPSTER_SCRIPTS
-            echo $HOME
-            echo $TOTO_TEST_1
-            echo $TOTO_TEST_2
+            echo $JHIPSTER_DEPENDENCIES_REPO
+            echo $JHIPSTER_DEPENDENCIES_BRANCH
+            echo $JHIPSTER_LIB_REPO
+            echo $JHIPSTER_LIB_BRANCH
+            echo $JHIPSTER_REPO
+            echo $JHIPSTER_BRANCH
+
       - run:
           name: Install last version of Docker
           command: |
