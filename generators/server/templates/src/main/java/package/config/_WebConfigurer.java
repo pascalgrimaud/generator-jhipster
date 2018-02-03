@@ -127,15 +127,11 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
     private void setLocationForStaticAssets(ConfigurableEmbeddedServletContainer container) {
         File root;
         String prefixPath = resolvePathPrefix();
-        <%_ if (clientFramework !== 'angular1') { _%>
-        root = new File(prefixPath + "<%= CLIENT_DIST_DIR %>");
-        <%_ } else { _%>
         if (env.acceptsProfiles(JHipsterConstants.SPRING_PROFILE_PRODUCTION)) {
             root = new File(prefixPath + "<%= CLIENT_DIST_DIR %>");
         } else {
             root = new File(prefixPath + "<%= CLIENT_MAIN_SRC_DIR %>");
         }
-        <%_ } _%>
         if (root.exists() && root.isDirectory()) {
             container.setDocumentRoot(root);
         }
