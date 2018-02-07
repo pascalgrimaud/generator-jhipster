@@ -29,8 +29,7 @@ import io.github.jhipster.config.JHipsterConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.actuate.autoconfigure.*;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 <%_ if (databaseType === 'sql') { _%>
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 <%_ } _%>
@@ -41,7 +40,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 <%_ if (applicationType === 'gateway') { _%>
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 <%_ } _%>
+<%_ if (applicationType === 'microservice' && authenticationType === 'uaa') { _%>
 import org.springframework.context.annotation.ComponentScan;
+<%_ } _%>
 <%_ if (authenticationType === 'uaa') { _%>
 import org.springframework.context.annotation.FilterType;
 <%_ } _%>
@@ -57,10 +58,8 @@ import java.util.Collection;
 @ComponentScan(
     excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = OAuth2InterceptedFeignConfiguration.class)
 )
-<%_ } else { _%>
-@ComponentScan
 <%_ } _%>
-@EnableAutoConfiguration(exclude = {MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class<% if (applicationType === 'gateway') { %>, MetricsDropwizardAutoConfiguration.class<% } %>})
+@SpringBootApplication
 @EnableConfigurationProperties({<% if (databaseType === 'sql') { %>LiquibaseProperties.class, <% } %>ApplicationProperties.class})
 <%_ if (serviceDiscoveryType) { _%>
 @EnableDiscoveryClient
