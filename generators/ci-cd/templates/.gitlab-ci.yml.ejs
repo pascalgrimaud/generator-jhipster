@@ -16,7 +16,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -%>
-<%_ if (gitlabUseDocker) { _%>
+<%_ if (insideDocker) { _%>
 image: openjdk:8
 <%_ } _%>
 
@@ -39,7 +39,7 @@ stages:
     - build
     - test
     - package
-<%_ if (heroku.includes('gitlab')) { _%>
+<%_ if (cicdIntegrations.includes('heroku')) { _%>
     - deploy
 <%_ } _%>
 
@@ -86,7 +86,7 @@ gradle-repackage:
     artifacts:
         paths:
             - build/libs/*.war
-    <%_ if (heroku.includes('gitlab')) { _%>
+    <%_ if (cicdIntegrations.includes('heroku')) { _%>
 gradle-deploy:
     stage: deploy
     script:
@@ -131,7 +131,7 @@ maven-front-test:
         paths:
             - target/test-results/karma/*
     <%_ } _%>
-    <%_ if (heroku.includes('gitlab')) { _%>
+    <%_ if (cicdIntegrations.includes('heroku')) { _%>
 maven-deploy:
     stage: deploy
     script:
