@@ -25,3 +25,10 @@ cp -f "$JHIPSTER_SAMPLES"/"$JHIPSTER"/.yo-rc.json "$APP_FOLDER"/
 cd "$APP_FOLDER"
 jhipster --force --no-insight --skip-checks --with-entities --skip-git --skip-commit-hook
 ls -al "$APP_FOLDER"
+
+#-------------------------------------------------------------------------------
+# Build the front if needed if profile is dev
+#-------------------------------------------------------------------------------
+if [[ -f "tsconfig.json" && $PROFILE == 'dev']]; then
+    yarn webpack:build:ci
+fi
