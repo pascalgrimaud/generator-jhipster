@@ -29,6 +29,6 @@ ls -al "$APP_FOLDER"
 #-------------------------------------------------------------------------------
 # Build the front if needed if profile is dev
 #-------------------------------------------------------------------------------
-if [[ -f "tsconfig.json" && $PROFILE == 'dev']]; then
+if [[ -f "tsconfig.json" && $PROFILE == 'dev' ]]; then
     yarn webpack:build:ci
 fi
