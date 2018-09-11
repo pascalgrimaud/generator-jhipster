@@ -24,3 +24,6 @@ steps:
 - script: |
     npm link
   displayName: 'npm link'
+- script: |
+    npm run test
+  displayName: 'npm run test'
