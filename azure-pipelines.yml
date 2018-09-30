@@ -38,20 +38,20 @@ jobs:
   strategy:
     maxParallel: 10
     matrix:
-      ngx-default:
-        JH_APP: ngx-default
-        JH_PROFILE: prod
-        JH_PROTRACTOR: 1
+      # ngx-default:
+      #   JH_APP: ngx-default
+      #   JH_PROFILE: prod
+      #   JH_PROTRACTOR: 1
       ngx-psql-es-noi18n:
         JH_APP: ngx-psql-es-noi18n
         JH_PROFILE: prod
         JH_PROTRACTOR: 1
-      ngx-gradle-fr:
-        JH_APP: ngx-gradle-fr
-        JH_PROFILE: prod
-        JH_PROTRACTOR: 1
-      ngx-h2mem-ws-nol2:
-        JH_APP: ngx-h2mem-ws-nol2
+      # ngx-gradle-fr:
+      #   JH_APP: ngx-gradle-fr
+      #   JH_PROFILE: prod
+      #   JH_PROTRACTOR: 1
+      # ngx-h2mem-ws-nol2:
+      #   JH_APP: ngx-h2mem-ws-nol2
 
   steps:
   #----------------------------------------------------------------------
@@ -80,21 +80,21 @@ jobs:
   #----------------------------------------------------------------------
   - bash: $(JH_SCRIPTS)/10-install-jhipster.sh
     displayName: 'GENERATION: install JHipster'
-  - bash: $(JH_SCRIPTS)/11-generate-entities.sh
-    displayName: 'GENERATION: entities'
+  # - bash: $(JH_SCRIPTS)/11-generate-entities.sh
+  #   displayName: 'GENERATION: entities'
   - bash: $(JH_SCRIPTS)/12-generate-project.sh
     displayName: 'GENERATION: project'
-  - bash: $(JH_SCRIPTS)/13-replace-version-generated-project.sh
-    displayName: 'GENERATION: replace version in generated project'
+  # - bash: $(JH_SCRIPTS)/13-replace-version-generated-project.sh
+  #   displayName: 'GENERATION: replace version in generated project'
   #----------------------------------------------------------------------
   # Launch tests
   #----------------------------------------------------------------------
   - bash: $(JH_SCRIPTS)/20-docker-compose.sh
     displayName: 'TESTS: Start docker-compose containers'
-  - bash: $(JH_SCRIPTS)/21-tests-backend.sh
-    displayName: 'TESTS: backend'
-  - bash: $(JH_SCRIPTS)/22-tests-frontend.sh
-    displayName: 'TESTS: frontend'
+  # - bash: $(JH_SCRIPTS)/21-tests-backend.sh
+  #   displayName: 'TESTS: backend'
+  # - bash: $(JH_SCRIPTS)/22-tests-frontend.sh
+  #   displayName: 'TESTS: frontend'
   - bash: $(JH_SCRIPTS)/23-package.sh
     displayName: 'TESTS: packaging'
   - bash: $(JH_SCRIPTS)/24-tests-e2e.sh
