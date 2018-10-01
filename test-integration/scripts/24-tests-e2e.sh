@@ -64,7 +64,9 @@ launchCurlOrProtractor() {
 if [ "$JH_RUN_APP" == 1 ]; then
     if [[ "$JH_APP" == *"uaa"* ]]; then
         cd "$JH_FOLDER_UAA"
-        java -jar target/*.war \
+        java \
+            -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses \
+            -jar target/*.war \
             --spring.profiles.active="$JH_PROFILE" &
             # --spring.profiles.active="$JH_PROFILE" \
             # --logging.level.org.zalando=OFF \
@@ -76,7 +78,9 @@ if [ "$JH_RUN_APP" == 1 ]; then
 
     free -m
     cd "$JH_FOLDER_APP"
-    java -jar app.war \
+    java \
+        -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses \
+        -jar target/*.war \
         --spring.profiles.active="$JH_PROFILE" &
         # --spring.profiles.active="$JH_PROFILE" \
         # --logging.level.org.zalando=OFF \
