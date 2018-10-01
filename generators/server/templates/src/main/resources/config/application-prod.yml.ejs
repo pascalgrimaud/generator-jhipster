@@ -173,6 +173,7 @@ spring:
     <%_ if (searchEngine === 'elasticsearch') { _%>
         jest:
             uri: http://localhost:9200
+            maxConnectionIdleTime: 1000
     <%_ } _%>
     <%_ if (databaseType === 'couchbase') { _%>
     couchbase:
