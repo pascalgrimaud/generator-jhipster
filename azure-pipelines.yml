@@ -84,17 +84,17 @@ jobs:
     displayName: 'GENERATION: entities'
   - bash: $(JH_SCRIPTS)/12-generate-project.sh
     displayName: 'GENERATION: project'
-  # - bash: $(JH_SCRIPTS)/13-replace-version-generated-project.sh
-  #   displayName: 'GENERATION: replace version in generated project'
+  - bash: $(JH_SCRIPTS)/13-replace-version-generated-project.sh
+    displayName: 'GENERATION: replace version in generated project'
   #----------------------------------------------------------------------
   # Launch tests
   #----------------------------------------------------------------------
   - bash: $(JH_SCRIPTS)/20-docker-compose.sh
     displayName: 'TESTS: Start docker-compose containers'
-  # - bash: $(JH_SCRIPTS)/21-tests-backend.sh
-  #   displayName: 'TESTS: backend'
-  # - bash: $(JH_SCRIPTS)/22-tests-frontend.sh
-  #   displayName: 'TESTS: frontend'
+  - bash: $(JH_SCRIPTS)/21-tests-backend.sh
+    displayName: 'TESTS: backend'
+  - bash: $(JH_SCRIPTS)/22-tests-frontend.sh
+    displayName: 'TESTS: frontend'
   - bash: $(JH_SCRIPTS)/23-package.sh
     displayName: 'TESTS: packaging'
   - bash: $(JH_SCRIPTS)/24-tests-e2e.sh
