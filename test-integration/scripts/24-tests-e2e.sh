@@ -66,7 +66,7 @@ if [ "$JH_RUN_APP" == 1 ]; then
         cd "$JH_FOLDER_UAA"
         java \
             -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses \
-            -jar target/*.war \
+            -jar app.war \
             --spring.profiles.active="$JH_PROFILE" &
             # --spring.profiles.active="$JH_PROFILE" \
             # --logging.level.org.zalando=OFF \
@@ -80,7 +80,7 @@ if [ "$JH_RUN_APP" == 1 ]; then
     cd "$JH_FOLDER_APP"
     java \
         -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses \
-        -jar target/*.war \
+        -jar app.war \
         --spring.profiles.active="$JH_PROFILE" &
         # --spring.profiles.active="$JH_PROFILE" \
         # --logging.level.org.zalando=OFF \
