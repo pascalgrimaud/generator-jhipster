@@ -160,16 +160,26 @@ describe('<%= entityClass %> e2e test', () => {
         const nbButtonsBeforeDelete = await <%= entityInstance %>ComponentsPage.countDeleteButtons();
         await <%= entityInstance %>ComponentsPage.clickOnLastDeleteButton();
 
+        console.log('debug: const deleteModal');
         const deleteModal = element(by.className('modal'));
+        console.log('debug: await waitUntilDisplayed(deleteModal)');
         await waitUntilDisplayed(deleteModal);
 
+        console.log('debug: new DeleteDialog');
         <%= entityInstance %>DeleteDialog = new <%= entityClass %>DeleteDialog();
+        console.log('debug: expect');
         expect(await <%= entityInstance %>DeleteDialog.getDialogTitle().getAttribute('id')).to.match(/<%= i18nKeyPrefix %>.delete.question/);
+        console.log('debug: await clickOnConfirmButton');
         await <%= entityInstance %>DeleteDialog.clickOnConfirmButton();
 
+        console.log('debug: await waitUntilHidden');
         await waitUntilHidden(deleteModal);
+        console.log('debug: await to be false');
+        expect(await deleteModal.isPresent()).to.be.false;
 
+        console.log('debug: waitUntilDeleteButtonsLength');
         await <%= entityInstance %>ComponentsPage.waitUntilDeleteButtonsLength(nbButtonsBeforeDelete - 1);
+        console.log('debug: countDeleteButtons');
         expect(await <%= entityInstance %>ComponentsPage.countDeleteButtons()).to.eq(nbButtonsBeforeDelete - 1);
     });<%= closeBlockComment %>
 
