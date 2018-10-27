@@ -172,9 +172,6 @@ describe('<%= entityClass %> e2e test', () => {
         console.log('debug: await clickOnConfirmButton');
         await <%= entityInstance %>DeleteDialog.clickOnConfirmButton();
 
-        console.log('debug: await waitUntilHidden clickOnConfirmButton');
-        await waitUntilHidden(<%= entityInstance %>DeleteDialog.clickOnConfirmButton());
-
         console.log('debug: await waitUntilHidden');
         await waitUntilHidden(deleteModal);
         console.log('debug: await to be false');

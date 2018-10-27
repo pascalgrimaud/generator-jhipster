@@ -38,28 +38,46 @@ jobs:
   strategy:
     maxParallel: 10
     matrix:
-      ngx-mongodb-kafka-cucumber:
-        JHI_APP: ngx-mongodb-kafka-cucumber
-      ngx-session-cassandra-fr:
-        JHI_APP: ngx-session-cassandra-fr
-      ngx-couchbase:
-        JHI_APP: ngx-couchbase
+      react-default:
+        JHI_APP: react-default
         JHI_PROFILE: prod
-      ms-ngx-gateway-eureka:
-        JHI_APP: ms-ngx-gateway-eureka
-      ms-ngx-gateway-eureka-oauth2:
-        JHI_APP: ms-ngx-gateway-eureka-oauth2
         JHI_PROTRACTOR: 1
-      ms-ngx-gateway-consul:
-        JHI_APP: ms-ngx-gateway-consul
-      ms-ngx-gateway-uaa:
-        JHI_APP: ms-ngx-gateway-uaa
-      ms-micro-eureka:
-        JHI_APP: ms-micro-eureka
-      ms-micro-consul:
-        JHI_APP: ms-micro-consul
-      webflux-mongodb:
-        JHI_APP: webflux-mongodb
+      react-default:
+        JHI_APP: react-default
+        JHI_PROFILE: prod
+        JHI_PROTRACTOR: 1
+      react-default:
+        JHI_APP: react-default
+        JHI_PROFILE: prod
+        JHI_PROTRACTOR: 1
+      react-default:
+        JHI_APP: react-default
+        JHI_PROFILE: prod
+        JHI_PROTRACTOR: 1
+      react-default:
+        JHI_APP: react-default
+        JHI_PROFILE: prod
+        JHI_PROTRACTOR: 1
+      react-default:
+        JHI_APP: react-default
+        JHI_PROFILE: prod
+        JHI_PROTRACTOR: 1
+      react-default:
+        JHI_APP: react-default
+        JHI_PROFILE: prod
+        JHI_PROTRACTOR: 1
+      react-default:
+        JHI_APP: react-default
+        JHI_PROFILE: prod
+        JHI_PROTRACTOR: 1
+      react-default:
+        JHI_APP: react-default
+        JHI_PROFILE: prod
+        JHI_PROTRACTOR: 1
+      react-default:
+        JHI_APP: react-default
+        JHI_PROFILE: prod
+        JHI_PROTRACTOR: 1
 
   steps:
   #----------------------------------------------------------------------
