@@ -172,14 +172,16 @@ describe('<%= entityClass %> e2e test', () => {
         console.log('debug: await clickOnConfirmButton');
         await <%= entityInstance %>DeleteDialog.clickOnConfirmButton();
 
+        console.log('debug: await waitUntilHidden clickOnConfirmButton');
+        await waitUntilHidden(<%= entityInstance %>DeleteDialog.clickOnConfirmButton());
+
         console.log('debug: await waitUntilHidden');
         await waitUntilHidden(deleteModal);
         console.log('debug: await to be false');
         expect(await deleteModal.isPresent()).to.be.false;
 
         console.log('debug: waitUntilDeleteButtonsLength');
-        // await <%= entityInstance %>ComponentsPage.waitUntilDeleteButtonsLength(nbButtonsBeforeDelete - 1);
-        await <%= entityInstance %>ComponentsPage.waitUntilLoaded();
+        await <%= entityInstance %>ComponentsPage.waitUntilDeleteButtonsLength(nbButtonsBeforeDelete - 1);
         console.log('debug: countDeleteButtons');
         expect(await <%= entityInstance %>ComponentsPage.countDeleteButtons()).to.eq(nbButtonsBeforeDelete - 1);
     });<%= closeBlockComment %>
