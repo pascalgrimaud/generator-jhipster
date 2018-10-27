@@ -167,6 +167,8 @@ describe('<%= entityClass %> e2e test', () => {
         expect(await <%= entityInstance %>DeleteDialog.getDialogTitle().getAttribute('id')).to.match(/<%= i18nKeyPrefix %>.delete.question/);
         await <%= entityInstance %>DeleteDialog.clickOnConfirmButton();
 
+        await waitUntilHidden(deleteModal);
+
         await <%= entityInstance %>ComponentsPage.waitUntilDeleteButtonsLength(nbButtonsBeforeDelete - 1);
         expect(await <%= entityInstance %>ComponentsPage.countDeleteButtons()).to.eq(nbButtonsBeforeDelete - 1);
     });<%= closeBlockComment %>
