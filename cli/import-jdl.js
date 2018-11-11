@@ -93,6 +93,9 @@ const generateApplicationFiles = ({ generator, application, withEntities, inAppF
     const cwd = inAppFolder ? path.join(generator.pwd, baseName) : generator.pwd;
     logger.debug(`Child process will be triggered for ${runYeomanProcess} with cwd: ${cwd}`);
 
+    if (process.argv.includes('--no-insight')) {
+        generator.options.noInsight = true;
+    }
     const command = `${CLI_NAME}:app`;
     forkProcess(runYeomanProcess, [command, ...getOptionAsArgs(generator.options, withEntities)], {
         cwd
