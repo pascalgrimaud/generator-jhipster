@@ -38,7 +38,7 @@ configProtractor() {
 #-------------------------------------------------------------------------------
 cd "$JHI_FOLDER_APP"
 if [[ -a ".yo-rc.json" ]]; then
-
+    echo "*** Package inside $JHI_FOLDER_APP"
     if [[ "$JHI_APP" == *"uaa"* ]]; then
         packageApplication "$JHI_FOLDER_UAA"
     fi
@@ -49,10 +49,11 @@ if [[ -a ".yo-rc.json" ]]; then
 else
     for dir in $(ls -1 "$JHI_FOLDER_APP"); do
         if [[ -d $dir ]]; then
-            pushd $dir
+            echo "*** Package inside $JHI_FOLDER_APP/$dir"
+            pushd -q $dir
             configProtractor "$JHI_FOLDER_APP/$dir"
             packageApplication "$JHI_FOLDER_APP/$dir"
-            popd
+            popd -q
         fi
     done
 fi

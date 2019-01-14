@@ -60,10 +60,10 @@ if [[ -a ".yo-rc.json" ]]; then
 else
     for dir in $(ls -1 "$JHI_FOLDER_APP"); do
         if [[ -d $dir ]]; then
-            pushd $dir
-            echo "*** Change version inside $JHI_FOLDER_APP/$dir"
+            pushd -q $dir
+            echo "*** Start docker-compose inside $JHI_FOLDER_APP/$dir"
             startDockerCompose "$JHI_FOLDER_APP/$dir"
-            popd
+            popd -q
         fi
     done
 fi

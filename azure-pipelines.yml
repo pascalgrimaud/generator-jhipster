@@ -45,10 +45,11 @@ jobs:
         JHI_PROFILE: prod
         JHI_PROTRACTOR: 1
         JHI_ENTITY: jdl
-      # react-noi18n-es-ws-gradle-session:
-      #   JHI_APP: react-noi18n-es-ws-gradle-session
-      #   JHI_PROTRACTOR: 1
-      #   JHI_ENTITY: sql
+        JHI_RUN_APP: 0
+      react-noi18n-es-ws-gradle-session:
+        JHI_APP: react-noi18n-es-ws-gradle-session
+        JHI_PROTRACTOR: 1
+        JHI_ENTITY: sql
       # ms-ngx-gateway-eureka-oauth2:
       #   JHI_APP: ms-ngx-gateway-eureka-oauth2
       #   JHI_PROTRACTOR: 1

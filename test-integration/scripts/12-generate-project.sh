@@ -48,15 +48,17 @@ fi
 ls -al "$JHI_FOLDER_APP"
 
 if [[ -a ".yo-rc.json" ]]; then
+    echo "*** List generated source inside $JHI_FOLDER_APP"
     git --no-pager log -n 10 --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 else
     for dir in $(ls -1 "$JHI_FOLDER_APP"); do
         if [[ -d $dir ]]; then
-            pushd $dir
+            echo "*** List generated source inside $JHI_FOLDER_APP/$dir"
+            pushd -q $dir
             ls -al ./
             git --no-pager log -n 10 --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit            
-            popd
+            popd -q
         fi
     done
 fi

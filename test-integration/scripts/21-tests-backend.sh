@@ -60,6 +60,7 @@ backendTests() {
 #-------------------------------------------------------------------------------
 cd "$JHI_FOLDER_APP"
 if [[ -a ".yo-rc.json" ]]; then
+    echo "*** Backend tests inside $JHI_FOLDER_APP"
     displayEnvironmentInformation "$JHI_FOLDER_APP"
     checkJavadoc "$JHI_FOLDER_APP"
     if [[ "$JHI_APP" == *"uaa"* ]]; then
@@ -70,11 +71,12 @@ if [[ -a ".yo-rc.json" ]]; then
 else
     for dir in $(ls -1 "$JHI_FOLDER_APP"); do
         if [[ -d $dir ]]; then
-            pushd $dir
+            echo "*** Backend tests inside $JHI_FOLDER_APP/$dir"
+            pushd -q $dir
             displayEnvironmentInformation "$JHI_FOLDER_APP/$dir"
             checkJavadoc "$JHI_FOLDER_APP/$dir"
             backendTests "$JHI_FOLDER_APP/$dir"
-            popd
+            popd -q
         fi
     done
 fi

@@ -26,10 +26,10 @@ if [[ -a ".yo-rc.json" ]]; then
 else
     for dir in $(ls -1 "$JHI_FOLDER_APP"); do
         if [[ -d $dir ]]; then
-            pushd $dir
+            pushd -q $dir
             echo "*** Remove memory limit for Elasticsearch inside $JHI_FOLDER_APP/$dir"
             noLimitElasticsearch "$JHI_FOLDER_APP/$dir"
-            popd
+            popd -q
         fi
     done
 fi
