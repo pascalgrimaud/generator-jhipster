@@ -19,6 +19,7 @@ prepareFolder() {
     rm -rf "$JHI_FOLDER_APP"
     mkdir -p "$JHI_FOLDER_APP"/.jhipster/
 }
+
 #-------------------------------------------------------------------------------
 # Copy entities json
 #-------------------------------------------------------------------------------
@@ -27,7 +28,10 @@ if [[ $JHI_REPO != "" ]]; then
     prepareFolder
 fi
 
-if [[ ("$JHI_ENTITY" == "mongodb") || ("$JHI_ENTITY" == "couchbase") ]]; then
+if [[ "$JHI_ENTITY" == "jdl" ]]; then
+    echo "*** Entities is managed by JDL"
+
+elif [[ ("$JHI_ENTITY" == "mongodb") || ("$JHI_ENTITY" == "couchbase") ]]; then
     moveEntity DocumentBankAccount
 
     moveEntity FieldTestEntity

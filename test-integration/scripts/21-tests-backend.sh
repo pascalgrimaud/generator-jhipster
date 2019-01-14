@@ -4,55 +4,77 @@ set -e
 source $(dirname $0)/00-init-env.sh
 
 #-------------------------------------------------------------------------------
-# Display environment information like JDK version
+# Functions
 #-------------------------------------------------------------------------------
-cd "$JHI_FOLDER_APP"
-if [ -f "mvnw" ]; then
-    ./mvnw enforcer:display-info
-elif [ -f "gradlew" ]; then
-    ./gradlew -v
-fi
+displayEnvironmentInformation() {
+    cd $1
+    if [ -f "mvnw" ]; then
+        ./mvnw enforcer:display-info
+    elif [ -f "gradlew" ]; then
+        ./gradlew -v
+    fi    
+}
 
-#-------------------------------------------------------------------------------
-# Check Javadoc generation
-#-------------------------------------------------------------------------------
-if [ -f "mvnw" ]; then
-    ./mvnw javadoc:javadoc
-elif [ -f "gradlew" ]; then
-    ./gradlew javadoc
-fi
+checkJavadoc() {
+    cd $1
+    if [ -f "mvnw" ]; then
+        ./mvnw javadoc:javadoc
+    elif [ -f "gradlew" ]; then
+        ./gradlew javadoc
+    fi
+}
 
-#-------------------------------------------------------------------------------
-# Launch UAA tests
-#-------------------------------------------------------------------------------
-if [[ "$JHI_APP" == *"uaa"* ]]; then
+launchUAATests() {
     cd "$JHI_FOLDER_UAA"
     ./mvnw test
-fi
+}
+
+backendTests() {
+    cd $1
+    if [ -f "mvnw" ]; then
+        ./mvnw test \
+            -Dlogging.level.ROOT=OFF \
+            -Dlogging.level.org.zalando=OFF \
+            -Dlogging.level.io.github.jhipster=OFF \
+            -Dlogging.level.io.github.jhipster.sample=OFF \
+            -Dlogging.level.io.github.jhipster.travis=OFF \
+            -Dlogging.level.org.springframework=OFF \
+            -Dlogging.level.org.springframework.web=OFF \
+            -Dlogging.level.org.springframework.security=OFF
+
+    elif [ -f "gradlew" ]; then
+        ./gradlew test \
+            -Dlogging.level.ROOT=OFF \
+            -Dlogging.level.org.zalando=OFF \
+            -Dlogging.level.io.github.jhipster=OFF \
+            -Dlogging.level.io.github.jhipster.sample=OFF \
+            -Dlogging.level.io.github.jhipster.travis=OFF \
+            -Dlogging.level.org.springframework=OFF \
+            -Dlogging.level.org.springframework.web=OFF \
+            -Dlogging.level.org.springframework.security=OFF
+    fi
+}
 
 #-------------------------------------------------------------------------------
-# Launch tests
+# Launch backend tests
 #-------------------------------------------------------------------------------
 cd "$JHI_FOLDER_APP"
-if [ -f "mvnw" ]; then
-    ./mvnw test \
-        -Dlogging.level.ROOT=OFF \
-        -Dlogging.level.org.zalando=OFF \
-        -Dlogging.level.io.github.jhipster=OFF \
-        -Dlogging.level.io.github.jhipster.sample=OFF \
-        -Dlogging.level.io.github.jhipster.travis=OFF \
-        -Dlogging.level.org.springframework=OFF \
-        -Dlogging.level.org.springframework.web=OFF \
-        -Dlogging.level.org.springframework.security=OFF
+if [[ -a ".yo-rc.json" ]]; then
+    displayEnvironmentInformation "$JHI_FOLDER_APP"
+    checkJavadoc "$JHI_FOLDER_APP"
+    if [[ "$JHI_APP" == *"uaa"* ]]; then
+        launchUAATests
+    fi
+    backendTests "$JHI_FOLDER_APP"
 
-elif [ -f "gradlew" ]; then
-    ./gradlew test \
-        -Dlogging.level.ROOT=OFF \
-        -Dlogging.level.org.zalando=OFF \
-        -Dlogging.level.io.github.jhipster=OFF \
-        -Dlogging.level.io.github.jhipster.sample=OFF \
-        -Dlogging.level.io.github.jhipster.travis=OFF \
-        -Dlogging.level.org.springframework=OFF \
-        -Dlogging.level.org.springframework.web=OFF \
-        -Dlogging.level.org.springframework.security=OFF
+else
+    for dir in $(ls -1 "$JHI_FOLDER_APP"); do
+        if [[ -d $dir ]]; then
+            pushd $dir
+            displayEnvironmentInformation "$JHI_FOLDER_APP/$dir"
+            checkJavadoc "$JHI_FOLDER_APP/$dir"
+            backendTests "$JHI_FOLDER_APP/$dir"
+            popd
+        fi
+    done
 fi

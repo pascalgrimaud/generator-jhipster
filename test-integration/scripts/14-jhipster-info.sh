@@ -4,4 +4,7 @@ set -e
 source $(dirname $0)/00-init-env.sh
 
 cd "$JHI_FOLDER_APP"
-jhipster info
+if [[ -a ".yo-rc.json" ]]; then
+    jhipster info
+
+fi
