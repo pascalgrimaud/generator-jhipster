@@ -55,10 +55,10 @@ else
     for dir in $(ls -1 "$JHI_FOLDER_APP"); do
         if [[ -d $dir ]]; then
             echo "*** List generated source inside $JHI_FOLDER_APP/$dir"
-            pushd -q $dir
+            cd $JHI_FOLDER_APP/$dir/
             ls -al ./
             git --no-pager log -n 10 --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit            
-            popd -q
+            cd ../
         fi
     done
 fi

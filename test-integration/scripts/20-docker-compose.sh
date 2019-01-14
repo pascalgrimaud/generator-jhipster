@@ -60,10 +60,10 @@ if [[ -a ".yo-rc.json" ]]; then
 else
     for dir in $(ls -1 "$JHI_FOLDER_APP"); do
         if [[ -d $dir ]]; then
-            pushd -q $dir
             echo "*** Start docker-compose inside $JHI_FOLDER_APP/$dir"
+            cd $JHI_FOLDER_APP/$dir/
             startDockerCompose "$JHI_FOLDER_APP/$dir"
-            popd -q
+            cd ../
         fi
     done
 fi

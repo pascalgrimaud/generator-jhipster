@@ -72,11 +72,11 @@ else
     for dir in $(ls -1 "$JHI_FOLDER_APP"); do
         if [[ -d $dir ]]; then
             echo "*** Backend tests inside $JHI_FOLDER_APP/$dir"
-            pushd -q $dir
+            cd $JHI_FOLDER_APP/$dir/
             displayEnvironmentInformation "$JHI_FOLDER_APP/$dir"
             checkJavadoc "$JHI_FOLDER_APP/$dir"
             backendTests "$JHI_FOLDER_APP/$dir"
-            popd -q
+            cd ../
         fi
     done
 fi

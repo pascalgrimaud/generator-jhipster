@@ -50,10 +50,10 @@ else
     for dir in $(ls -1 "$JHI_FOLDER_APP"); do
         if [[ -d $dir ]]; then
             echo "*** Package inside $JHI_FOLDER_APP/$dir"
-            pushd -q $dir
+            cd $JHI_FOLDER_APP/$dir/
             configProtractor "$JHI_FOLDER_APP/$dir"
             packageApplication "$JHI_FOLDER_APP/$dir"
-            popd -q
+            cd ../
         fi
     done
 fi
