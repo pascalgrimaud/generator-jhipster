@@ -6,6 +6,7 @@ source $(dirname $0)/00-init-env.sh
 echo "display java version"
 java -version
 javac -version
+echo Java Home = $JAVA_HOME
 
 #-------------------------------------------------------------------------------
 # Display environment information like JDK version
