@@ -99,7 +99,9 @@ jobs:
                     sudo apt-get install -y openjdk-11-jdk
                     sudo update-java-alternatives -s java-1.11.0-openjdk-amd64
                     ls -al /usr/lib/jvm/
+                    echo "before=" $JAVA_HOME
                     export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+                    echo "after=" $JAVA_HOME
                     java -version
                 else
                     echo '*** Using OpenJDK 8 by default'
