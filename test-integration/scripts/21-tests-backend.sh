@@ -6,11 +6,7 @@ source $(dirname $0)/00-init-env.sh
 echo "display java version"
 java -version
 javac -version
-echo Java Home = $JAVA_HOME
-
-echo "before=" $JAVA_HOME
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
-echo "after=" $JAVA_HOME
+echo "JAVA_HOME=" $JAVA_HOME
 
 #-------------------------------------------------------------------------------
 # Display environment information like JDK version
