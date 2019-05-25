@@ -3,6 +3,9 @@
 set -e
 source $(dirname $0)/00-init-env.sh
 
+java -version
+javac -version
+
 #-------------------------------------------------------------------------------
 # Display environment information like JDK version
 #-------------------------------------------------------------------------------
