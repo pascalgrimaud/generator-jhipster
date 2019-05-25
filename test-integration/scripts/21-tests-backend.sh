@@ -3,6 +3,7 @@
 set -e
 source $(dirname $0)/00-init-env.sh
 
+echo "display java version"
 java -version
 javac -version
 
