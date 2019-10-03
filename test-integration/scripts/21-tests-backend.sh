@@ -43,6 +43,7 @@ fi
 #-------------------------------------------------------------------------------
 cd "$JHI_FOLDER_APP"
 if [ -f "mvnw" ]; then
+    ./mvnw -ntp dependency:go-offline
     ./mvnw -ntp -P-webpack verify \
         -Dlogging.level.ROOT=OFF \
         -Dlogging.level.org.zalando=OFF \
