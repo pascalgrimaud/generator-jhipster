@@ -74,26 +74,18 @@ before_install:
 # Install JHipster and generate project+entities
 #----------------------------------------------------------------------
 install:
-    - ls -al ~/.m2/repository/org/springframework/boot/spring-boot/
     - $JHI_SCRIPTS/10-install-jhipster.sh
-    - ls -al ~/.m2/repository/org/springframework/boot/spring-boot/
     - $JHI_SCRIPTS/11-generate-entities.sh
-    - ls -al ~/.m2/repository/org/springframework/boot/spring-boot/
     - $JHI_SCRIPTS/12-generate-project.sh
-    - ls -al ~/.m2/repository/org/springframework/boot/spring-boot/
     - $JHI_SCRIPTS/13-replace-version-generated-project.sh
-    - ls -al ~/.m2/repository/org/springframework/boot/spring-boot/
     - $JHI_SCRIPTS/14-jhipster-info.sh
-    - ls -al ~/.m2/repository/org/springframework/boot/spring-boot/
 
 #----------------------------------------------------------------------
 # Launch tests
 #----------------------------------------------------------------------
 script:
     - $JHI_SCRIPTS/20-docker-compose.sh
-    - ls -al ~/.m2/repository/org/springframework/boot/spring-boot/
     - $JHI_SCRIPTS/21-tests-backend.sh
-    - ls -al ~/.m2/repository/org/springframework/boot/spring-boot/
     - $JHI_SCRIPTS/22-tests-frontend.sh
     - $JHI_SCRIPTS/23-package.sh
     - $JHI_SCRIPTS/24-tests-e2e.sh
