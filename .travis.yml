@@ -24,10 +24,10 @@ services:
 language: node_js
 node_js:
     - '10.16.3'
-cache:
-    directories:
-        - $HOME/.m2
-        - $HOME/.gradle
+# cache:
+#     directories:
+#         - $HOME/.m2
+#         - $HOME/.gradle
 env:
     global:
         - JHI_PROFILE=dev
@@ -94,10 +94,10 @@ script:
 #----------------------------------------------------------------------
 # Cache
 #----------------------------------------------------------------------
-before_cache:
-    - rm -rf $HOME/.m2/repository/io/github/jhipster/jhipster-framework/
-    - rm -rf $HOME/.m2/repository/io/github/jhipster/jhipster-dependencies/
-    - rm -rf $HOME/.m2/repository/io/github/jhipster/jhipster-parent/
+# before_cache:
+#     - rm -rf $HOME/.m2/repository/io/github/jhipster/jhipster-framework/
+#     - rm -rf $HOME/.m2/repository/io/github/jhipster/jhipster-dependencies/
+#     - rm -rf $HOME/.m2/repository/io/github/jhipster/jhipster-parent/
 notifications:
     webhooks:
         urls:
