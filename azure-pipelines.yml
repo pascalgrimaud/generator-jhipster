@@ -42,47 +42,52 @@ jobs:
 
       strategy:
           matrix:
-              jdl-default:
-                  JHI_APP: jdl-default
-                  JHI_ENTITY: jdl
+              ngx-psql-es-noi18n-mapsid:
+                  JHI_APP: ngx-psql-es-noi18n-mapsid
                   JHI_PROFILE: prod
                   JHI_PROTRACTOR: 1
-              jdl-default-jdk8:
-                  JHI_APP: jdl-default
-                  JHI_ENTITY: jdl
-                  JHI_PROFILE: prod
-                  JHI_PROTRACTOR: 1
-                  JHI_JDK: 8
-              react-default:
-                  JHI_APP: react-default
-                  JHI_PROFILE: prod
-                  JHI_PROTRACTOR: 1
-                  JHI_ENTITY: sql
-              react-noi18n-es-ws-gradle-session:
-                  JHI_APP: react-noi18n-es-ws-gradle-session
-                  JHI_PROFILE: prod
-                  JHI_PROTRACTOR: 1
-                  JHI_ENTITY: sql
-              ms-ngx-gateway-eureka-oauth2:
-                  JHI_APP: ms-ngx-gateway-eureka-oauth2
-                  JHI_PROTRACTOR: 1
-                  JHI_ENTITY: sql
-              ms-ngx-gateway-consul:
-                  JHI_APP: ms-ngx-gateway-consul
-                  JHI_ENTITY: sql
-              ms-ngx-gateway-uaa:
-                  JHI_APP: ms-ngx-gateway-uaa
-                  JHI_ENTITY: uaa
-              ngx-mariadb-oauth2-sass-infinispan:
-                  JHI_APP: ngx-mariadb-oauth2-sass-infinispan
-                  JHI_PROTRACTOR: 1
-                  JHI_ENTITY: sql
-              ngx-h2mem-ws-nol2:
-                  JHI_APP: ngx-h2mem-ws-nol2
-                  JHI_ENTITY: sql
-              webflux-mongodb:
-                  JHI_APP: webflux-mongodb
-                  JHI_ENTITY: none
+                  JHI_ENTITY: sqlfull
+              # jdl-default:
+              #     JHI_APP: jdl-default
+              #     JHI_ENTITY: jdl
+              #     JHI_PROFILE: prod
+              #     JHI_PROTRACTOR: 1
+              # jdl-default-jdk8:
+              #     JHI_APP: jdl-default
+              #     JHI_ENTITY: jdl
+              #     JHI_PROFILE: prod
+              #     JHI_PROTRACTOR: 1
+              #     JHI_JDK: 8
+              # react-default:
+              #     JHI_APP: react-default
+              #     JHI_PROFILE: prod
+              #     JHI_PROTRACTOR: 1
+              #     JHI_ENTITY: sql
+              # react-noi18n-es-ws-gradle-session:
+              #     JHI_APP: react-noi18n-es-ws-gradle-session
+              #     JHI_PROFILE: prod
+              #     JHI_PROTRACTOR: 1
+              #     JHI_ENTITY: sql
+              # ms-ngx-gateway-eureka-oauth2:
+              #     JHI_APP: ms-ngx-gateway-eureka-oauth2
+              #     JHI_PROTRACTOR: 1
+              #     JHI_ENTITY: sql
+              # ms-ngx-gateway-consul:
+              #     JHI_APP: ms-ngx-gateway-consul
+              #     JHI_ENTITY: sql
+              # ms-ngx-gateway-uaa:
+              #     JHI_APP: ms-ngx-gateway-uaa
+              #     JHI_ENTITY: uaa
+              # ngx-mariadb-oauth2-sass-infinispan:
+              #     JHI_APP: ngx-mariadb-oauth2-sass-infinispan
+              #     JHI_PROTRACTOR: 1
+              #     JHI_ENTITY: sql
+              # ngx-h2mem-ws-nol2:
+              #     JHI_APP: ngx-h2mem-ws-nol2
+              #     JHI_ENTITY: sql
+              # webflux-mongodb:
+              #     JHI_APP: webflux-mongodb
+              #     JHI_ENTITY: none
 
       steps:
           #----------------------------------------------------------------------
