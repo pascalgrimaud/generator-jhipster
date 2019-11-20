@@ -84,8 +84,8 @@ install:
 #----------------------------------------------------------------------
 script:
     - $JHI_SCRIPTS/20-docker-compose.sh
-    - $JHI_SCRIPTS/21-tests-backend.sh
-    - $JHI_SCRIPTS/22-tests-frontend.sh
+    # - $JHI_SCRIPTS/21-tests-backend.sh
+    # - $JHI_SCRIPTS/22-tests-frontend.sh
     - $JHI_SCRIPTS/23-package.sh
     - $JHI_SCRIPTS/24-tests-e2e.sh
     - $JHI_SCRIPTS/25-sonar-analyze.sh

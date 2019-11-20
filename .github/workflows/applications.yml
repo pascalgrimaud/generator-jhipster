@@ -30,6 +30,7 @@ jobs:
                     - app-type: ngx-psql-es-noi18n-mapsid
                       entity: sqlfull
                       profile: prod
+                      protractor: 1
                     # - app-type: ngx-session-cassandra-fr
                     #   entity: cassandra
                     #   profile: dev
@@ -43,6 +44,7 @@ jobs:
             JHI_ENTITY: ${{ matrix.entity }}
             JHI_APP: ${{ matrix.app-type }}
             JHI_PROFILE: ${{ matrix.profile }}
+            JHI_PROTRACTOR: ${{ matrix.protractor }}
         steps:
             - uses: actions/checkout@v1
             - uses: actions/setup-node@v1
@@ -65,10 +67,10 @@ jobs:
               run: $JHI_SCRIPTS/14-jhipster-info.sh
             - name: Start docker containers
               run: $JHI_SCRIPTS/20-docker-compose.sh
-            - name: Run backend tests
-              run: $JHI_SCRIPTS/21-tests-backend.sh
-            - name: Run frontend tests
-              run: $JHI_SCRIPTS/22-tests-frontend.sh
+            # - name: Run backend tests
+            #   run: $JHI_SCRIPTS/21-tests-backend.sh
+            # - name: Run frontend tests
+            #   run: $JHI_SCRIPTS/22-tests-frontend.sh
             - name: Package application
               run: $JHI_SCRIPTS/23-package.sh
             - name: Run e2e tests
