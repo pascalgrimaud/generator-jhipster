@@ -25,7 +25,7 @@ jobs:
             matrix:
                 node_version: [12.x]
                 os: [ubuntu-latest]
-                app-type: [ngx-session-cassandra-fr, ngx-mongodb-kafka-cucumber, ngx-couchbase]
+                app-type: [ngx-psql-es-noi18n-mapsid]
                 include:
                     - app-type: ngx-psql-es-noi18n-mapsid
                       entity: sqlfull
