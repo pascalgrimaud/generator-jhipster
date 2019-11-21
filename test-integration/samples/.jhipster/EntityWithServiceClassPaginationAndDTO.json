@@ -10,6 +10,7 @@
     ],
     "changelogDate": "20160806123744",
     "dto": "mapstruct",
+    "searchEngine": "elasticsearch",
     "service": "serviceClass",
     "entityTableName": "ent_service_class_pag_and_dto",
     "databaseType": "sql",
