@@ -71,32 +71,32 @@ elif [[ "$JHI_ENTITY" == "sqllight" ]]; then
     moveEntity Operation
 
 elif [[ "$JHI_ENTITY" == "sqlfull" ]]; then
-    moveEntity BankAccount
-    moveEntity Label
-    moveEntity Operation
-    moveEntity Place
-    moveEntity Division
+    # moveEntity BankAccount
+    # moveEntity Label
+    # moveEntity Operation
+    # moveEntity Place
+    # moveEntity Division
 
-    moveEntity FieldTestEntity
-    moveEntity FieldTestMapstructEntity
-    moveEntity FieldTestServiceClassEntity
-    moveEntity FieldTestServiceImplEntity
-    moveEntity FieldTestInfiniteScrollEntity
-    moveEntity FieldTestPaginationEntity
+    # moveEntity FieldTestEntity
+    # moveEntity FieldTestMapstructEntity
+    # moveEntity FieldTestServiceClassEntity
+    # moveEntity FieldTestServiceImplEntity
+    # moveEntity FieldTestInfiniteScrollEntity
+    # moveEntity FieldTestPaginationEntity
 
-    moveEntity TestEntity
-    moveEntity TestMapstruct
-    moveEntity TestServiceClass
-    moveEntity TestServiceImpl
-    moveEntity TestInfiniteScroll
-    moveEntity TestPagination
-    moveEntity TestManyToOne
-    moveEntity TestManyToMany
-    moveEntity TestManyRelPaginDTO
-    moveEntity TestOneToOne
-    moveEntity TestCustomTableName
-    moveEntity TestTwoRelationshipsSameEntity
-    moveEntity SuperMegaLargeTestEntity
+    # moveEntity TestEntity
+    # moveEntity TestMapstruct
+    # moveEntity TestServiceClass
+    # moveEntity TestServiceImpl
+    # moveEntity TestInfiniteScroll
+    # moveEntity TestPagination
+    # moveEntity TestManyToOne
+    # moveEntity TestManyToMany
+    # moveEntity TestManyRelPaginDTO
+    # moveEntity TestOneToOne
+    # moveEntity TestCustomTableName
+    # moveEntity TestTwoRelationshipsSameEntity
+    # moveEntity SuperMegaLargeTestEntity
 
     moveEntity EntityWithDTO
     moveEntity EntityWithPagination
@@ -111,11 +111,11 @@ elif [[ "$JHI_ENTITY" == "sqlfull" ]]; then
     moveEntity EntityWithServiceImplAndPagination
     # moveEntity EntityWithServiceImplPaginationAndDTO
 
-    moveEntity MapsIdParentEntityWithoutDTO
-    moveEntity MapsIdChildEntityWithoutDTO
-    moveEntity MapsIdParentEntityWithDTO
-    moveEntity MapsIdChildEntityWithDTO
-    moveEntity MapsIdUserProfileWithDTO
+    # moveEntity MapsIdParentEntityWithoutDTO
+    # moveEntity MapsIdChildEntityWithoutDTO
+    # moveEntity MapsIdParentEntityWithDTO
+    # moveEntity MapsIdChildEntityWithDTO
+    # moveEntity MapsIdUserProfileWithDTO
 
 elif [[ "$JHI_ENTITY" == "sql" ]]; then
     moveEntity BankAccount
