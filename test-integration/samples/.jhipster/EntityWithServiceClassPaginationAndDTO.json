@@ -1,5 +1,6 @@
 {
     "fluentMethods": true,
+    "clientRootFolder": "",
     "relationships": [],
     "fields": [
         {
@@ -8,8 +9,10 @@
         }
     ],
     "changelogDate": "20160806123744",
-    "entityTableName": "ent_service_class_pag_and_dto",
     "dto": "mapstruct",
-    "pagination": "pagination",
-    "service": "serviceClass"
+    "service": "serviceClass",
+    "entityTableName": "ent_service_class_pag_and_dto",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
 }
