@@ -12,7 +12,7 @@
     "dto": "mapstruct",
     "searchEngine": "elasticsearch",
     "service": "serviceClass",
-    "entityTableName": "kapzkdpoazkd",
+    "entityTableName": "entServClassPagDto",
     "databaseType": "sql",
     "jpaMetamodelFiltering": false,
     "pagination": "pagination"
