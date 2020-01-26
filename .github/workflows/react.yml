@@ -49,6 +49,18 @@ jobs:
                     - react-gradle-cassandra-session-redis
                     - react-maven-cassandra-session-redis
                     - react-gradle-cassandra-session-redis
+                    - react-maven-cassandra-session-redis
+                    - react-gradle-cassandra-session-redis
+                    - react-maven-cassandra-session-redis
+                    - react-gradle-cassandra-session-redis
+                    - react-maven-cassandra-session-redis
+                    - react-gradle-cassandra-session-redis
+                    - react-maven-cassandra-session-redis
+                    - react-gradle-cassandra-session-redis
+                    - react-maven-cassandra-session-redis
+                    - react-gradle-cassandra-session-redis
+                    - react-maven-cassandra-session-redis
+                    - react-gradle-cassandra-session-redis
                 include:
                     - app-type: react-maven-cassandra-session-redis
                       entity: cassandra
