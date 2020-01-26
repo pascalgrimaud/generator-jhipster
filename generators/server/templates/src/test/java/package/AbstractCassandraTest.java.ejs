@@ -77,7 +77,7 @@ public class AbstractCassandraTest {
     private static void startTestcontainer() throws TTransportException, IOException {
         CASSANDRA_CONTAINER =
             new GenericContainer("<%= DOCKER_CASSANDRA %>")
-                .waitingFor(Wait.forListeningPort().withStartupTimeout(Duration.ofSeconds(30)))
+                .waitingFor(Wait.forListeningPort().withStartupTimeout(Duration.ofSeconds(60)))
                 .withExposedPorts(CASSANDRA_TEST_PORT);
 
         CASSANDRA_CONTAINER.start();
