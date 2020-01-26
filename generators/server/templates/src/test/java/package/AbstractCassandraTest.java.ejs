@@ -24,6 +24,7 @@ import io.github.jhipster.config.JHipsterConstants;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Session;
+import com.datastax.driver.core.SocketOptions;
 import org.apache.cassandra.exceptions.ConfigurationException;
 import org.apache.thrift.transport.TTransportException;
 import org.cassandraunit.CQLDataLoader;
@@ -65,16 +66,14 @@ public class AbstractCassandraTest {
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>> start CASSANDRA <<<<<<<<<<<<<<<<<<<<<<<<<<");
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>> start CASSANDRA <<<<<<<<<<<<<<<<<<<<<<<<<<");
             startTestcontainer();
-            PoolingOptions poolingOptions = new PoolingOptions()
-                .setMaxRequestsPerConnection(HostDistance.LOCAL, 32768)
-                .setMaxRequestsPerConnection(HostDistance.REMOTE, 2000);
+            SocketOptions socketOptions = new SocketOptions().setReadTimeoutMillis(600000);
             Cluster cluster = new Cluster.Builder()
                 .addContactPoint("127.0.0.1")
                 .addContactPoint("0.0.0.0")
                 .withPort(CASSANDRA_CONTAINER.getMappedPort(CASSANDRA_TEST_PORT))
                 .withoutMetrics()
                 .withoutJMXReporting()
-                .withPoolingOptions(poolingOptions)
+                .withSocketOptions(socketOptions)
                 .build();
 
             Session session = cluster.connect();
