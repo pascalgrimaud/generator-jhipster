@@ -1,7 +1,9 @@
 #!/bin/bash
 
-#set -e
+set -e
 source $(dirname $0)/00-init-env.sh
+
+free
 
 #-------------------------------------------------------------------------------
 # Display environment information like JDK version
@@ -59,3 +61,5 @@ elif [ -f "gradlew" ]; then
 fi
 
 docker ps -a
+docker logs $(docker ps -a | grep "cassandra:3.11.5" | awk '{print $1}')
+free
