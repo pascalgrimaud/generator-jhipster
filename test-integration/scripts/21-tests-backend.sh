@@ -52,24 +52,10 @@ fi
 #-------------------------------------------------------------------------------
 cd "$JHI_FOLDER_APP"
 if [ -f "mvnw" ]; then
-    ./mvnw -ntp -P-webpack verify \
-        -Dlogging.level.ROOT=OFF \
-        -Dlogging.level.org.zalando=OFF \
-        -Dlogging.level.io.github.jhipster=OFF \
-        -Dlogging.level.io.github.jhipster.sample=OFF \
-        -Dlogging.level.org.springframework=OFF \
-        -Dlogging.level.org.springframework.web=OFF \
-        -Dlogging.level.org.springframework.security=OFF
+    ./mvnw -ntp -P-webpack verify
 
 elif [ -f "gradlew" ]; then
-    ./gradlew test integrationTest $JHI_GRADLE_EXCLUDE_WEBPACK \
-        -Dlogging.level.ROOT=OFF \
-        -Dlogging.level.org.zalando=OFF \
-        -Dlogging.level.io.github.jhipster=OFF \
-        -Dlogging.level.io.github.jhipster.sample=OFF \
-        -Dlogging.level.org.springframework=OFF \
-        -Dlogging.level.org.springframework.web=OFF \
-        -Dlogging.level.org.springframework.security=OFF
+    ./gradlew test integrationTest $JHI_GRADLE_EXCLUDE_WEBPACK
 fi
 
 docker ps -a
