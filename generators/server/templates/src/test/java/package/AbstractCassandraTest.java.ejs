@@ -58,6 +58,9 @@ public class AbstractCassandraTest {
     @BeforeAll
     public static void startServer() throws TTransportException, ConfigurationException, IOException, URISyntaxException {
         if (!started) {
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>> start CASSANDRA <<<<<<<<<<<<<<<<<<<<<<<<<<");
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>> start CASSANDRA <<<<<<<<<<<<<<<<<<<<<<<<<<");
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>> start CASSANDRA <<<<<<<<<<<<<<<<<<<<<<<<<<");
             startTestcontainer();
             Cluster cluster = new Cluster.Builder()
                 .addContactPoint("127.0.0.1")
