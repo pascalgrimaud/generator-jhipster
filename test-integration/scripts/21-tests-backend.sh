@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# set -e
+set -e
 source $(dirname $0)/00-init-env.sh
 
 free
@@ -59,7 +59,3 @@ if [ -f "mvnw" ]; then
 elif [ -f "gradlew" ]; then
     ./gradlew test integrationTest $JHI_GRADLE_EXCLUDE_WEBPACK
 fi
-
-docker ps -a
-docker logs $(docker ps -a | grep "cassandra:3.11.5" | awk '{print $1}')
-free

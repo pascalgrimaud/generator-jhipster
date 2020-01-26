@@ -43,6 +43,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Base class for starting/stopping Cassandra during tests.
@@ -53,11 +54,11 @@ public class AbstractCassandraTest {
     public static final String CASSANDRA_UNIT_KEYSPACE = "cassandra_unit_keyspace";
     public static GenericContainer CASSANDRA_CONTAINER = null;
     public static final int CASSANDRA_TEST_PORT = 9042;
-    private static boolean started = false;
+    private static AtomicBoolean started = new AtomicBoolean(false);
 
     @BeforeAll
     public static void startServer() throws TTransportException, ConfigurationException, IOException, URISyntaxException {
-        if (!started) {
+        if (!started.get()) {
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>> start CASSANDRA <<<<<<<<<<<<<<<<<<<<<<<<<<");
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>> start CASSANDRA <<<<<<<<<<<<<<<<<<<<<<<<<<");
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>> start CASSANDRA <<<<<<<<<<<<<<<<<<<<<<<<<<");
@@ -73,7 +74,7 @@ public class AbstractCassandraTest {
             createTestKeyspace(session);
             CQLDataLoader dataLoader = new CQLDataLoader(session);
             applyScripts(dataLoader, "config/cql/changelog/", "*.cql");
-            started = true;
+            started.set(true);
         }
     }
 
