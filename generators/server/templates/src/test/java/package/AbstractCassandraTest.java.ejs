@@ -18,6 +18,8 @@
 -%>
 package <%= packageName %>;
 
+import com.datastax.driver.core.HostDistance;
+import com.datastax.driver.core.PoolingOptions;
 import io.github.jhipster.config.JHipsterConstants;
 
 import com.datastax.driver.core.Cluster;
@@ -63,11 +65,16 @@ public class AbstractCassandraTest {
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>> start CASSANDRA <<<<<<<<<<<<<<<<<<<<<<<<<<");
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>> start CASSANDRA <<<<<<<<<<<<<<<<<<<<<<<<<<");
             startTestcontainer();
+            PoolingOptions poolingOptions = new PoolingOptions()
+                .setMaxRequestsPerConnection(HostDistance.LOCAL, 32768)
+                .setMaxRequestsPerConnection(HostDistance.REMOTE, 2000);
             Cluster cluster = new Cluster.Builder()
                 .addContactPoint("127.0.0.1")
+                .addContactPoint("0.0.0.0")
                 .withPort(CASSANDRA_CONTAINER.getMappedPort(CASSANDRA_TEST_PORT))
                 .withoutMetrics()
                 .withoutJMXReporting()
+                .withPoolingOptions(poolingOptions)
                 .build();
 
             Session session = cluster.connect();
