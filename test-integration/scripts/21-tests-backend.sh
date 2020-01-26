@@ -71,3 +71,5 @@ elif [ -f "gradlew" ]; then
         -Dlogging.level.org.springframework.web=OFF \
         -Dlogging.level.org.springframework.security=OFF
 fi
+
+docker ps -a
