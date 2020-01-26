@@ -55,48 +55,23 @@ jobs:
                     - react-gradle-cassandra-session-redis
                     - react-gradle-couchbase-caffeine
                 include:
-                    - app-type: react-default
-                      entity: sql
+                    - app-type: react-maven-cassandra-session-redis
+                      entity: cassandra
                       profile: prod
                       war: 0
                       protractor: 1
-                    - app-type: react-maven-psql-es-noi18n-mapsid
-                      entity: sql # TODO: need change to sqlfull, when react is fixed
+                    - app-type: react-gradle-cassandra-session-redis
+                      entity: cassandra
                       profile: prod
                       war: 0
-                      protractor: 0 # TODO: instead of sql, because of flacky tests
-                    - app-type: react-maven-h2mem-memcached
-                      entity: none # TODO: instead of sql, because of flacky tests
-                      profile: dev
-                      war: 0 # TODO: need change to 1, when maven+war is fixed
                       protractor: 0 # TODO: instead of sql, because of flacky tests
                     - app-type: react-maven-cassandra-session-redis
                       entity: cassandra
                       profile: prod
                       war: 0
                       protractor: 1
-                    - app-type: react-maven-couchbase-caffeine
-                      entity: couchbase
-                      profile: prod
-                      war: 0
-                      protractor: 0
-                    - app-type: react-gradle-psql-es-noi18n-mapsid
-                      entity: sql # TODO: need change to sqlfull, when react is fixed
-                      profile: prod
-                      war: 0
-                      protractor: 0 # TODO: instead of sql, because of flacky tests
-                    - app-type: react-gradle-h2mem-memcached
-                      entity: none # TODO: instead of sql, because of flacky tests
-                      profile: dev
-                      war: 1
-                      protractor: 0 # TODO: instead of sql, because of flacky tests
                     - app-type: react-gradle-cassandra-session-redis
                       entity: cassandra
-                      profile: prod
-                      war: 0
-                      protractor: 0 # TODO: instead of sql, because of flacky tests
-                    - app-type: react-gradle-couchbase-caffeine
-                      entity: couchbase
                       profile: prod
                       war: 0
                       protractor: 0 # TODO: instead of sql, because of flacky tests
