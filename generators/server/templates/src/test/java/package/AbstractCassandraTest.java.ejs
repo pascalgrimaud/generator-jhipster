@@ -94,7 +94,7 @@ public class AbstractCassandraTest {
     }
 
     private static void createTestKeyspace(Session session) {
-        String createQuery = "CREATE KEYSPACE " + CASSANDRA_UNIT_KEYSPACE + " WITH replication={'class' : 'SimpleStrategy', 'replication_factor':1}";
+        String createQuery = "CREATE KEYSPACE " + CASSANDRA_UNIT_KEYSPACE + " WITH replication={'class' : 'SimpleStrategy', 'replication_factor':1} AND DURABLE_WRITES = false";
         session.execute(createQuery);
         String useKeyspaceQuery = "USE " + CASSANDRA_UNIT_KEYSPACE;
         session.execute(useKeyspaceQuery);
