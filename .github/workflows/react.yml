@@ -45,15 +45,22 @@ jobs:
                 node_version: [12.14.0]
                 os: [ubuntu-latest]
                 app-type:
-                    - react-default
-                    - react-maven-psql-es-noi18n-mapsid
-                    - react-maven-h2mem-memcached
                     - react-maven-cassandra-session-redis
-                    - react-maven-couchbase-caffeine
-                    - react-gradle-psql-es-noi18n-mapsid
-                    - react-gradle-h2mem-memcached
                     - react-gradle-cassandra-session-redis
-                    - react-gradle-couchbase-caffeine
+                    - react-maven-cassandra-session-redis
+                    - react-gradle-cassandra-session-redis
+                    - react-maven-cassandra-session-redis
+                    - react-gradle-cassandra-session-redis
+                    - react-maven-cassandra-session-redis
+                    - react-gradle-cassandra-session-redis
+                    - react-maven-cassandra-session-redis
+                    - react-gradle-cassandra-session-redis
+                    - react-maven-cassandra-session-redis
+                    - react-gradle-cassandra-session-redis
+                    - react-maven-cassandra-session-redis
+                    - react-gradle-cassandra-session-redis
+                    - react-maven-cassandra-session-redis
+                    - react-gradle-cassandra-session-redis
                 include:
                     - app-type: react-default
                       entity: sql
@@ -141,18 +148,18 @@ jobs:
             #----------------------------------------------------------------------
             # Launch tests
             #----------------------------------------------------------------------
-            - name: 'TESTS: Start docker-compose containers'
-              run: $JHI_SCRIPTS/20-docker-compose.sh
+            # - name: 'TESTS: Start docker-compose containers'
+            #   run: $JHI_SCRIPTS/20-docker-compose.sh
             - name: 'TESTS: backend'
               run: $JHI_SCRIPTS/21-tests-backend.sh
-            - name: 'TESTS: frontend'
-              run: $JHI_SCRIPTS/22-tests-frontend.sh
-            - name: 'TESTS: packaging'
-              run: $JHI_SCRIPTS/23-package.sh
-            - name: 'TESTS: End-to-End'
-              run: $JHI_SCRIPTS/24-tests-e2e.sh
-            - name: 'TESTS: Sonar analysis'
-              run: $JHI_SCRIPTS/25-sonar-analyze.sh
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            # - name: 'TESTS: frontend'
+            #   run: $JHI_SCRIPTS/22-tests-frontend.sh
+            # - name: 'TESTS: packaging'
+            #   run: $JHI_SCRIPTS/23-package.sh
+            # - name: 'TESTS: End-to-End'
+            #   run: $JHI_SCRIPTS/24-tests-e2e.sh
+            # - name: 'TESTS: Sonar analysis'
+            #   run: $JHI_SCRIPTS/25-sonar-analyze.sh
+            #   env:
+            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
