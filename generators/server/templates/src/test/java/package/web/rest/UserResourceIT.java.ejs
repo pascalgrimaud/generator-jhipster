@@ -272,7 +272,7 @@ public class UserResourceIT <% if (databaseType === 'cassandra') { %>extends Abs
         <%_ if (databaseType === 'couchbase') { _%>
         mockAuthentication();
         <%_ } _%>
-        <%_ if (databaseType !== 'sql' && databaseType !== 'cassandra') { _%>
+        <%_ if (databaseType !== 'sql') { _%>
         userRepository.deleteAll()<% if (reactive) { %>.block()<% } %>;
         user = createEntity();
         <%_ } _%>
