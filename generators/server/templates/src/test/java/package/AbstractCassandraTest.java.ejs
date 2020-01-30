@@ -20,6 +20,8 @@ package <%= packageName %>;
 
 import io.github.jhipster.config.JHipsterConstants;
 
+import com.datastax.driver.core.HostDistance;
+import com.datastax.driver.core.PoolingOptions;
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Session;
 import org.apache.cassandra.exceptions.ConfigurationException;
@@ -60,9 +62,14 @@ public class AbstractCassandraTest {
     public static void startServer() throws TTransportException, ConfigurationException, IOException, URISyntaxException {
         if (!started) {
             startTestcontainer();
+            PoolingOptions poolingOptions = new PoolingOptions()
+                .setMaxRequestsPerConnection(HostDistance.LOCAL, 32768)
+                .setMaxRequestsPerConnection(HostDistance.REMOTE, 2000);
+
             Cluster cluster = new Cluster.Builder()
                 .addContactPoint("127.0.0.1")
                 .withPort(CASSANDRA_CONTAINER.getMappedPort(CASSANDRA_TEST_PORT))
+                .withPoolingOptions(poolingOptions)
                 .withoutMetrics()
                 .withoutJMXReporting()
                 .build();
