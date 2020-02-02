@@ -67,6 +67,10 @@ public class AbstractCassandraTest {
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>> start CASSANDRA <<<<<<<<<<<<<<<<<<<<<<<<<<");
             startTestcontainer();
             SocketOptions socketOptions = new SocketOptions().setReadTimeoutMillis(600000);
+
+            PoolingOptions poolingOptions = new PoolingOptions()
+                .setMaxQueueSize(65536);
+
             Cluster cluster = new Cluster.Builder()
                 .addContactPoint("127.0.0.1")
                 .addContactPoint("0.0.0.0")
@@ -74,6 +78,7 @@ public class AbstractCassandraTest {
                 .withoutMetrics()
                 .withoutJMXReporting()
                 .withSocketOptions(socketOptions)
+                .withPoolingOptions(poolingOptions)
                 .build();
 
             Session session = cluster.connect();
