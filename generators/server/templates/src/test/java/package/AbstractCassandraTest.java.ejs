@@ -71,6 +71,9 @@ public class AbstractCassandraTest {
             PoolingOptions poolingOptions = new PoolingOptions()
                 .setMaxQueueSize(65536)
                 .setPoolTimeoutMillis(2000);
+            SocketOptions socketOptions = new SocketOptions()
+                .setConnectTimeoutMillis(10000)
+                .setReadTimeoutMillis(10000);
 
             Cluster cluster = new Cluster.Builder()
                 .addContactPoint("127.0.0.1")
@@ -78,8 +81,8 @@ public class AbstractCassandraTest {
                 .withPort(CASSANDRA_CONTAINER.getMappedPort(CASSANDRA_TEST_PORT))
                 .withoutMetrics()
                 .withoutJMXReporting()
-                .withSocketOptions(socketOptions)
                 .withPoolingOptions(poolingOptions)
+                .withSocketOptions(socketOptions)
                 .build();
 
             Session session = cluster.connect();
