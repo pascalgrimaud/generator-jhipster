@@ -69,7 +69,8 @@ public class AbstractCassandraTest {
             SocketOptions socketOptions = new SocketOptions().setReadTimeoutMillis(600000);
 
             PoolingOptions poolingOptions = new PoolingOptions()
-                .setMaxQueueSize(65536);
+                .setMaxQueueSize(65536)
+                .setPoolTimeoutMillis(30000);
 
             Cluster cluster = new Cluster.Builder()
                 .addContactPoint("127.0.0.1")
