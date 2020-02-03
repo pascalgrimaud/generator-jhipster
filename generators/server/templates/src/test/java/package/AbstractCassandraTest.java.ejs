@@ -70,7 +70,7 @@ public class AbstractCassandraTest {
 
             PoolingOptions poolingOptions = new PoolingOptions()
                 .setMaxQueueSize(65536)
-                .setPoolTimeoutMillis(30000);
+                .setPoolTimeoutMillis(2000);
 
             Cluster cluster = new Cluster.Builder()
                 .addContactPoint("127.0.0.1")
@@ -100,7 +100,7 @@ public class AbstractCassandraTest {
     }
 
     private static void createTestKeyspace(Session session) {
-        String createQuery = "CREATE KEYSPACE " + CASSANDRA_UNIT_KEYSPACE + " WITH replication={'class' : 'SimpleStrategy', 'replication_factor':1} AND DURABLE_WRITES = false";
+        String createQuery = "CREATE KEYSPACE " + CASSANDRA_UNIT_KEYSPACE + " WITH replication={'class' : 'SimpleStrategy', 'replication_factor':1}";
         session.execute(createQuery);
         String useKeyspaceQuery = "USE " + CASSANDRA_UNIT_KEYSPACE;
         session.execute(useKeyspaceQuery);
