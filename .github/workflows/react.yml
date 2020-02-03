@@ -96,6 +96,9 @@ jobs:
             - name: 'TOOLS: cassandra'
               run: |
                   sudo sysctl -w \
+                      net.ipv4.tcp_keepalive_time=60 \
+                      net.ipv4.tcp_keepalive_probes=3 \
+                      net.ipv4.tcp_keepalive_intvl=10 \
                       net.core.rmem_max=16777216 \
                       net.core.wmem_max=16777216 \
                       net.core.rmem_default=16777216 \
