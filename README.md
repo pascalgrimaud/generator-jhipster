@@ -1,3 +1,5 @@
+Test GitHub Actions builds
+
 [![Logo][jhipster-image]][jhipster-url]
 
 [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Downloads][npmcharts-image]][npmcharts-url] [![Gitter][gitter-badge-image]][gitter-badge-url]
