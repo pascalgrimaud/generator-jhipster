@@ -137,13 +137,15 @@ jobs:
             - uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node_version }}
-            - uses: actions/setup-java@v1
-              with:
-                  java-version: '11.x'
             - name: Download latest chrome binary
               run: |
                   sudo apt update
                   sudo apt install google-chrome-stable
+            - uses: actions/setup-java@v1
+              with:
+                  java-version: '11.x'
+            - name: 'TOOLS: display configuration'
+              run: $JHI_SCRIPTS/01-display-configuration.sh
             - name: 'TOOLS: configure tools installed by the system'
               run: $JHI_SCRIPTS/03-system.sh
             - name: 'TOOLS: configure git'

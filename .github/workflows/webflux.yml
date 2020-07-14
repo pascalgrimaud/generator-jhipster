@@ -128,6 +128,8 @@ jobs:
             - uses: actions/setup-java@v1
               with:
                   java-version: '11.x'
+            - name: 'TOOLS: display configuration'
+              run: $JHI_SCRIPTS/01-display-configuration.sh
             - name: 'TOOLS: configure tools installed by the system'
               run: $JHI_SCRIPTS/03-system.sh
             - name: 'TOOLS: configure git'
