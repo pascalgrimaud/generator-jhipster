@@ -176,15 +176,16 @@ describe('Component Tests', () => {
     describe('Before route enter', () => {
       it('Should retrieve data', async () => {
         // GIVEN
-        const found<%= entityAngularName %> = { id: <%- tsKeyId %> };
-        <%= entityInstance %>ServiceStub.find.resolves(found<%= entityAngularName %>);
+        const entity = { id: <%- tsKeyId %> };
+        comp.<%= entityInstance %> = entity;
+        <%= entityInstance %>ServiceStub.find.resolves(entity);
 
         // WHEN
         comp.beforeRouteEnter({ params: { <%= entityInstance %>Id: <%- tsKeyId %> } }, null, cb => cb(comp));
         await comp.$nextTick();
 
         // THEN
-        expect(comp.<%= entityInstance %>).toBe(found<%= entityAngularName %>);
+        expect(comp.<%= entityInstance %>).toBe(entity);
       });
     });
 
