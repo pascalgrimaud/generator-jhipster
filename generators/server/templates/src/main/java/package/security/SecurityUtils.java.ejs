@@ -55,6 +55,8 @@ import java.util.stream.Stream;
  */
 public final class SecurityUtils {
 
+    public static final String PREFERRED_USERNAME = "preferred_username";
+
     private SecurityUtils() {
     }
 
@@ -75,6 +77,10 @@ public final class SecurityUtils {
     }
 
     private static String extractPrincipal(Authentication authentication) {
+        return extractInformation(authentication, PREFERRED_USERNAME);
+    }
+
+    public static String extractInformation(Authentication authentication, String attributeName) {
         if (authentication == null) {
             return null;
         } else if (authentication.getPrincipal() instanceof UserDetails) {
@@ -82,11 +88,11 @@ public final class SecurityUtils {
             return springSecurityUser.getUsername();
 <%_ if (authenticationType === 'oauth2') { _%>
         } else if (authentication instanceof JwtAuthenticationToken) {
-            return (String) ((JwtAuthenticationToken)authentication).getToken().getClaims().get("preferred_username");
+            return (String) ((JwtAuthenticationToken)authentication).getToken().getClaims().get(attributeName);
         } else if (authentication.getPrincipal() instanceof DefaultOidcUser) {
             Map<String, Object> attributes = ((DefaultOidcUser) authentication.getPrincipal()).getAttributes();
-            if (attributes.containsKey("preferred_username")) {
-                return (String) attributes.get("preferred_username");
+            if (attributes.containsKey(attributeName)) {
+                return (String) attributes.get(attributeName);
             }
 <%_ } _%>
         } else if (authentication.getPrincipal() instanceof String) {
