@@ -62,6 +62,9 @@ const defaultCommands = {
   heroku: {
     desc: 'Deploy the current application to Heroku',
   },
+  'hexagonal-spring-boot-init': {
+    desc: 'Create a JHipster application with Hexagonal Architecture',
+  },
   info: {
     desc: 'Display information about your current project and system',
   },
