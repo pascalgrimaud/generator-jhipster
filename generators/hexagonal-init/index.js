@@ -41,30 +41,39 @@ module.exports = class extends BaseGenerator {
             getConfig() {
                 this.jhipsterVersion = packagejs.version;
                 const configuration = this.config;
+                this.packageName = configuration.get('packageName');
                 this.baseName = configuration.get('baseName');
                 this.dasherizedBaseName = _.kebabCase(this.baseName);
                 this.humanizedBaseName = _.startCase(this.baseName);
-                this.packageName = this.config.get('packageName');
             }
         };
     }
     get prompting() {
         return {
-            askPackage: prompts.askPackage,
-            askModuleName: prompts.askForModuleName,
+            askPackageName: prompts.askPackageName,
+            askBaseName: prompts.askBaseName,
         };
     }
 
     get configuring() {
         return {
             setup() {
-                // Update jhipsterVersion.
                 this.jhipsterConfig.jhipsterVersion = packagejs.version;
+                this.jhipsterConfig.packageName = this.packageName;
+                this.jhipsterConfig.baseName = this.baseName;
+                this.dasherizedBaseName = _.kebabCase(this.baseName);
+                this.humanizedBaseName = _.startCase(this.baseName);
             },
         };
     }
 
     writing() {
         this.template('pom.xml.ejs', 'pom.xml');
+        this.template
+        serverJavaApp: [
+            {
+                path: SERVER_MAIN_SRC_DIR,
+                templates: [{ file: 'package/Application.java', renameTo: generator => `${generator.javaDir}${generator.mainClass}.java` }],
+            },
     }
 };

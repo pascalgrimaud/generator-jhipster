@@ -20,29 +20,46 @@ const chalk = require('chalk');
 const { serverDefaultConfig } = require('../generator-defaults');
 
 module.exports = {
-    askPackage,
-    askForModuleName,
+    askPackageName,
+    askBaseName,
 };
 
-async function askPackage() {
+async function askPackageName() {
     if (this.abort) return;
-    const prompts = [
-        {
-            type: 'input',
-            name: 'packageName',
-            validate: input =>
-                /^([a-z_]{1}[a-z0-9_]*(\.[a-z_]{1}[a-z0-9_]*)*)$/.test(input)
-                    ? true
-                    : 'The package name you have provided is not a valid Java package name.',
-            message: 'What is your default Java package name?',
-            default: serverDefaultConfig.packageName,
-            store: true,
-        }
-    ];
-    const props = await this.prompt(prompts);
+    const answer = await this.prompt({
+        type: 'input',
+        name: 'packageName',
+        validate: input =>
+            /^([a-z_]{1}[a-z0-9_]*(\.[a-z_]{1}[a-z0-9_]*)*)$/.test(input)
+                ? true
+                : 'The package name you have provided is not a valid Java package name.',
+        message: 'What is your default Java package name?',
+        default: serverDefaultConfig.packageName,
+        store: true,
+    });
+    this.packageName = answer.packageName;
 }
 
-async function askForModuleName() {
+async function askBaseName() {
     if (this.abort) return;
-    return this.askModuleName(this);
+    const defaultAppBaseName = this.getDefaultAppName();
+    const answer = await this.prompt({
+        type: 'input',
+        name: 'baseName',
+        validate: input => {
+            if (!/^([a-zA-Z0-9_]*)$/.test(input)) {
+                return 'Your base name cannot contain special characters or a blank space';
+            }
+            if (/_/.test(input)) {
+                return 'Your base name cannot contain underscores as this does not meet the URI spec';
+            }
+            if (input === 'application') {
+                return "Your base name cannot be named 'application' as this is a reserved name for Spring Boot";
+            }
+            return true;
+        },
+        message: 'What is the base name of your application?',
+        default: defaultAppBaseName,
+    });
+    this.baseName = answer.baseName;
 }
