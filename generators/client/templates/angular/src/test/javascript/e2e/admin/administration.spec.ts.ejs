@@ -64,25 +64,16 @@ describe('administration', () => {
   <%_ } _%>
 
   it('should load metrics', async () => {
-    console.log('1');
     await navBarPage.clickOnAdmin('metrics');
-    console.log('2');
     await browser.sleep(500);
-    console.log('3');
     const heading = element(by.id('metrics-page-heading'));
-    console.log('4');
     await browser.wait(ec.visibilityOf(heading), 5000);
-    console.log('5');
     <%_ if (enableTranslation) { _%>
-    console.log('6');
     const expect1 = 'metrics.title';
     <%_ } else { _%>
-    console.log('7');
     const expect1 = 'Application Metrics';
     <%_ } _%>
-    console.log('8');
-    const value1 = await heading.<%- elementGetter %>;
-    console.log('9');
+    const value1 = await element(by.id('metrics-page-heading')).<%- elementGetter %>;
     expect(value1).to.eq(expect1);
   });
 
