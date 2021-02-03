@@ -133,3 +133,7 @@ Additional builds at [hipster-labs/jhipster-daily-builds](https://github.com/hip
 [npmcharts-url]: https://npmcharts.com/compare/generator-jhipster
 [gitter-badge-image]: https://badges.gitter.im/jhipster/generator-jhipster.svg
 [gitter-badge-url]: https://gitter.im/jhipster/generator-jhipster?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
+
+<html>
+<object type="image/svg+xml" data="https://opencollective.com/generator-jhipster/tiers/backer.svg?avatarHeight=36&width=600" style="max-width: 100%;"></object>
+</html>
