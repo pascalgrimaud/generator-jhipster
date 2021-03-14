@@ -65,6 +65,9 @@ const defaultCommands = {
   init: {
     desc: 'Init a JHipster application',
   },
+  maven: {
+    desc: 'Add Maven',
+  },
   'spring-boot': {
     desc: 'Init a JHipster application with Spring Boot',
   },

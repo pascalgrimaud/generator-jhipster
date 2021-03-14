@@ -16,59 +16,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- const chalk = require('chalk');
- const _ = require('lodash');
- const prompts = require('./prompts');
- const BaseGenerator = require('../generator-base');
- const packagejs = require('../../package.json');
- 
- module.exports = class extends BaseGenerator {
-   constructor(args, opts) {
-     super(args, opts);
-   }
- 
-   get initializing() {
-     return {
-       validateFromCli() {
-         this.checkInvocationFromCLI();
-       },
-       sayHello() {
-         this.log(chalk.white('⬢ Welcome to the JHipster Hexagonal Architecture ⬢'));
-       },
-       getConfig() {
-         this.jhipsterVersion = packagejs.version;
-         const configuration = this.config;
-         this.baseName = configuration.get('baseName');
-         this.dasherizedBaseName = _.kebabCase(this.baseName);
-         this.humanizedBaseName = _.startCase(this.baseName);
-       },
-     };
-   }
- 
-   get prompting() {
-     return {
-       askPackageName: prompts.askPackageName,
-     };
-   }
- 
-   get configuring() {
-     return {
-       setup() {
-         this.jhipsterConfig.jhipsterVersion = packagejs.version;
-         this.jhipsterConfig.packageName = this.packageName;
-         this.jhipsterConfig.baseName = this.baseName;
-         this.dasherizedBaseName = _.kebabCase(this.baseName);
-         this.humanizedBaseName = _.startCase(this.baseName);
-         this.mainClass = this.getMainClassName();
-       },
-     };
-   }
- 
-   writing() {
-     this.template('pom.xml.ejs', 'pom.xml');
-     //this.template('package/src/main/java/Application.java.ejs', `src/main/java/${generator.javaDir}${generator.mainClass}.java`);
-     this.template('package/src/main/java/Application.java.ejs', `src/main/java/com/mycompany/myapp/${this.mainClass}.java`);
-    
-   }
- };
- 
+const chalk = require('chalk');
+const _ = require('lodash');
+const prompts = require('./prompts');
+const BaseGenerator = require('../generator-base');
+const packagejs = require('../../package.json');
+
+module.exports = class extends BaseGenerator {
+  constructor(args, opts) {
+    super(args, opts);
+  }
+
+  get initializing() {
+    return {
+      validateFromCli() {
+        this.checkInvocationFromCLI();
+      },
+      sayHello() {
+        this.log(chalk.white('⬢ Welcome to the JHipster Hexagonal Architecture ⬢'));
+      },
+      getConfig() {
+        this.jhipsterVersion = packagejs.version;
+        const configuration = this.config;
+        this.baseName = configuration.get('baseName');
+        this.dasherizedBaseName = _.kebabCase(this.baseName);
+        this.humanizedBaseName = _.startCase(this.baseName);
+      },
+    };
+  }
+
+  get prompting() {
+    return {
+      askPackageName: prompts.askPackageName,
+    };
+  }
+
+  get configuring() {
+    return {
+      setup() {
+        this.jhipsterConfig.jhipsterVersion = packagejs.version;
+        this.jhipsterConfig.packageName = this.packageName;
+        this.jhipsterConfig.baseName = this.baseName;
+        this.dasherizedBaseName = _.kebabCase(this.baseName);
+        this.humanizedBaseName = _.startCase(this.baseName);
+        this.mainClass = this.getMainClassName();
+      },
+    };
+  }
+
+  writing() {
+    this.template('pom.xml.ejs', 'pom.xml');
+    //this.template('package/src/main/java/Application.java.ejs', `src/main/java/${generator.javaDir}${generator.mainClass}.java`);
+    this.template('package/src/main/java/Application.java.ejs', `src/main/java/com/mycompany/myapp/${this.mainClass}.java`);
+  
+  }
+};
