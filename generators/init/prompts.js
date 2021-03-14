@@ -20,25 +20,8 @@ const chalk = require('chalk');
 const { serverDefaultConfig } = require('../generator-defaults');
 
 module.exports = {
-  askPackageName,
   askBaseName,
 };
-
-async function askPackageName() {
-  if (this.abort) return;
-  const answer = await this.prompt({
-    type: 'input',
-    name: 'packageName',
-    validate: input =>
-      /^([a-z_]{1}[a-z0-9_]*(\.[a-z_]{1}[a-z0-9_]*)*)$/.test(input)
-        ? true
-        : 'The package name you have provided is not a valid Java package name.',
-    message: 'What is your default Java package name?',
-    default: serverDefaultConfig.packageName,
-    store: true,
-  });
-  this.packageName = answer.packageName;
-}
 
 async function askBaseName() {
   if (this.abort) return;

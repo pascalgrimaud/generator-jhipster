@@ -21,11 +21,12 @@ const _ = require('lodash');
 const prompts = require('./prompts');
 const BaseGenerator = require('../generator-base');
 const packagejs = require('../../package.json');
+const dependabotPackagejs = require('./templates/package.json');
+const constants = require('../generator-constants');
 
 module.exports = class extends BaseGenerator {
   constructor(args, opts) {
     super(args, opts);
-    this.registerPrettierTransform();
   }
 
   get initializing() {
@@ -39,13 +40,40 @@ module.exports = class extends BaseGenerator {
       getConfig() {
         this.jhipsterVersion = packagejs.version;
         const configuration = this.config;
-        this.packageName = configuration.get('packageName');
+        // this.packageName = configuration.get('packageName');
         this.baseName = configuration.get('baseName');
         this.dasherizedBaseName = _.kebabCase(this.baseName);
         this.humanizedBaseName = _.startCase(this.baseName);
+        this.dependencies = packagejs.dependencies;
+        this.dependabotDependencies = dependabotPackagejs.devDependencies;
       },
+      initConstant() {
+        this.NODE_VERSION = constants.NODE_VERSION;
+      }
     };
   }
+
+  // _loading() {
+  //   return {
+  //     loadPackageJson() {
+  //       // The installed prettier version should be the same that the one used during JHipster generation to avoid formatting differences
+  //       _.merge(this.dependabotPackageJson, {
+  //         devDependencies: {
+  //           prettier: packageJson.dependencies.prettier,
+  //           'prettier-plugin-java': packageJson.dependencies['prettier-plugin-java'],
+  //           'prettier-plugin-packagejson': packageJson.dependencies['prettier-plugin-packagejson'],
+  //         },
+  //       });
+
+  //       // Load common package.json into packageJson
+  //       _.merge(this.dependabotPackageJson, this.fs.readJSON(this.fetchFromInstalledJHipster('init', 'templates', 'package.json')));
+  //     },
+  //   };
+  // }
+
+  // get loading() {
+  //   return this._loading();
+  // }
 
   get prompting() {
     return {
@@ -67,13 +95,23 @@ module.exports = class extends BaseGenerator {
   }
 
   writing() {
-    this.template('pom.xml.ejs', 'pom.xml');
-    this.template;
-    [
-      {
-        path: 'src/main/java/',
-        templates: [{ file: 'package/Application.java', renameTo: generator => `src/main/java/${generator.mainClass}.java` }],
-      },
-    ];
+    // editor
+    this.template('editorconfig.ejs', '.editorconfig');
+
+    // git
+    this.template('gitattributes.ejs', '.gitattributes');
+    this.template('gitignore.ejs', '.gitignore');
+
+    // husky / prettier
+    this.template('.huskyrc.ejs', '.huskyrc');
+    this.template('.lintstagedrc.js.ejs', '.lintstagedrc.js')
+    this.template('.prettierignore.ejs', '.prettierignore');
+    this.template('.prettierrc.ejs', '.prettierrc');
+
+    // package.json
+    this.template('package.json.ejs', 'package.json');
+
+    // README.md
+    this.template('README.md.ejs', 'README.md');
   }
 };

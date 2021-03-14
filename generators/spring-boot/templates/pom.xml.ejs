@@ -1,5 +1,5 @@
 <%#
- Copyright 2013-2020 the original author or authors from the JHipster project.
+ Copyright 2013-2021 the original author or authors from the JHipster project.
 
  This file is part of the JHipster project, see https://www.jhipster.tech/
  for more information.
@@ -25,17 +25,20 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.4.1</version>
+    <version>2.4.3</version>
     <relativePath/>
   </parent>
+
   <groupId><%= packageName %></groupId>
   <artifactId><%= dasherizedBaseName %></artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name><%= humanizedBaseName %></name>
   <description><%= humanizedBaseName %> project generated with JHipster</description>
+
   <properties>
     <java.version>11</java.version>
   </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -47,6 +50,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
   <build>
     <plugins>
       <plugin>

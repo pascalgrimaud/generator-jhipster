@@ -267,7 +267,7 @@ module.exports = class JHipsterBaseGenerator extends PrivateBase {
     }
     return outputPathCustomizer.call(this, outputPath);
   }
-
+  
   getPrettierExtensions() {
     let prettierExtensions = 'md,json,yml,html';
     if (!this.skipClient && !this.jhipsterConfig.skipClient) {
